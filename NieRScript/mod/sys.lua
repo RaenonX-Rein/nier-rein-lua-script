@@ -17,10 +17,16 @@ function system.update_stop_message(message)
     local t = begin_t:check()
     local avg = t / counter.get_count_pass()
 
-    setStopMessage(string.format(
-            "Message: %s\nElapsed: %.3f s\nRuns: %s\nAverage %.3f s / Pass\n\nCurrent Status: %s\nPrevious Status: %s",
-            message, t, counter.get_formatted_text(), avg, status.get_current(), status.get_previous()
-    ))
+    local stop_message = string.format("Message: %s\n", message)
+    stop_message = stop_message .. string.format("Elapsed: %.3f s\n", t)
+    stop_message = stop_message .. string.format(
+            "Runs: %s of %s\n", counter.get_formatted_text(), configs.total_games
+    )
+    stop_message = stop_message .. string.format("Average %.3f s / Pass\n\n", avg)
+    stop_message = stop_message .. string.format("Current Status: %s\n", status.get_current())
+    stop_message = stop_message .. string.format("Previous Status: %s", status.get_previous())
+
+    setStopMessage(stop_message)
 end
 
 function system.terminate(message)
@@ -52,7 +58,8 @@ function system.generate_toast()
         local avg = t / counter.get_count_pass()
 
         toast(string.format(
-                "%.3f s @ %s (%s, %.3f)", t, status.get_current(), counter.get_formatted_text(), avg
+                "%.3f s @ %s (%s of %d, %.3f)",
+                t, status.get_current(), counter.get_formatted_text(), configs.total_games, avg
         ))
 
         last_toast:set()

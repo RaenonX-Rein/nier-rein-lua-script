@@ -13,7 +13,7 @@ configs.toast_cd_sec = 5
 --endregion
 
 --region Game
-configs.total_games = 100
+configs.total_games = 175
 
 configs.quest_select = "WeekRot"
 --DarkMem/Ticket
