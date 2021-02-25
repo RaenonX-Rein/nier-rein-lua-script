@@ -16,9 +16,13 @@ configs.toast_cd_sec = 5
 configs.total_games = 175
 
 configs.quest_select = "WeekRot"
---DarkMem/Ticket
---DarkMem/Coin
---WeekRot
+-- DarkMem/Ticket-1
+-- DarkMem/Coin-1
+-- DarkMem/Ticket-2
+-- DarkMem/Coin-2
+-- Main/9
+-- Main/10
+-- WeekRot
 --endregion
 
 --region Script

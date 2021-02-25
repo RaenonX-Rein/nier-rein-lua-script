@@ -1,10 +1,16 @@
 local coords = {}
 
 --region Quest Select
---Dark Memories (DarkMem)
-coords.quest_select_dark_mem_coin = Location(2076, 638)  -- Trade coin quest (DarkMem/Coin)
-coords.quest_select_dark_mem_ticket = Location(2076, 907)  -- Scout ticket quest (DarkMem/Ticket)
-coords.quest_select_week_rot = Location(2077, 1089)  -- Weekly rotated sub-quest
+-- Dark Memories (DarkMem)
+coords.quest_select_dark_mem_coin_1 = Location(2076, 638)  -- Trade coin quest (DarkMem/Coin-1)
+coords.quest_select_dark_mem_ticket_1 = Location(2076, 907)  -- Scout ticket quest (DarkMem/Ticket-1)
+coords.quest_select_dark_mem_coin_2 = Location(2087, 816)  -- Trade coin quest (DarkMem/Coin-2)
+coords.quest_select_dark_mem_ticket_2 = Location(2087, 1080)  -- Trade coin quest (DarkMem/Coin-2)
+-- Main quest
+coords.quest_select_main_9 = Location(2116, 984)
+coords.quest_select_main_10 = Location(2487, 981)
+-- Others
+coords.quest_select_week_rot = Location(2077, 1089)  -- Weekly rotating sub-quest
 --endregion
 
 --region Quest Control

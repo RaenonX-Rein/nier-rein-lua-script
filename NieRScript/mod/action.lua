@@ -20,10 +20,18 @@ function action.quest_select_quest()
     -- and click on the configured desired quest to enter the quest ready screen
     local quest_name = configs.quest_select
 
-    if quest_name == "DarkMem/Ticket" then
-        base.click_delay(coords.quest_select_dark_mem_ticket)
-    elseif quest_name == "DarkMem/Coin" then
-        base.click_delay(coords.quest_select_dark_mem_coin)
+    if quest_name == "DarkMem/Ticket-1" then
+        base.click_delay(coords.quest_select_dark_mem_ticket_1)
+    elseif quest_name == "DarkMem/Coin-1" then
+        base.click_delay(coords.quest_select_dark_mem_coin_1)
+    elseif quest_name == "DarkMem/Ticket-2" then
+        base.click_delay(coords.quest_select_dark_mem_ticket_2)
+    elseif quest_name == "DarkMem/Coin-2" then
+        base.click_delay(coords.quest_select_dark_mem_coin_2)
+    elseif quest_name == "Main/9" then
+        base.click_delay(coords.quest_select_main_9)
+    elseif quest_name == "Main/10" then
+        base.click_delay(coords.quest_select_main_10)
     elseif quest_name == "WeekRot" then
         base.click_delay(coords.quest_select_week_rot)
     else
