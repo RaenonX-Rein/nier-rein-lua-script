@@ -10,6 +10,15 @@ sys = require(scriptPath() .. "mod/sys")
 
 local action = {}
 
+local function swipe_up_dark_mem()
+    setDragDropTiming(50, 50)  -- Press & hold for 50 ms; hold for 50 ms before release
+    setDragDropStepCount(30)  -- Moving step count
+    setDragDropStepInterval(10)  -- Step changing interval in ms
+
+    dragDrop(coords.quest_select_dark_mem_swipe_1, coords.quest_select_dark_mem_swipe_2)
+    wait(0.5)  -- Wait for swipe animation recovery
+end
+
 ---Select the quest to auto if the current page is in quest selection menu.
 function action.quest_select_quest()
     if base.check_image(images.quest_ready_indicator, status.QUEST_READY) then
@@ -25,8 +34,10 @@ function action.quest_select_quest()
     elseif quest_name == "DarkMem/Coin-1" then
         base.click_delay(coords.quest_select_dark_mem_coin_1)
     elseif quest_name == "DarkMem/Ticket-2" then
+        swipe_up_dark_mem()
         base.click_delay(coords.quest_select_dark_mem_ticket_2)
     elseif quest_name == "DarkMem/Coin-2" then
+        swipe_up_dark_mem()
         base.click_delay(coords.quest_select_dark_mem_coin_2)
     elseif quest_name == "Main/9" then
         base.click_delay(coords.quest_select_main_9)

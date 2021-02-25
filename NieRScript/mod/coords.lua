@@ -6,6 +6,8 @@ coords.quest_select_dark_mem_coin_1 = Location(2076, 638)  -- Trade coin quest (
 coords.quest_select_dark_mem_ticket_1 = Location(2076, 907)  -- Scout ticket quest (DarkMem/Ticket-1)
 coords.quest_select_dark_mem_coin_2 = Location(2087, 816)  -- Trade coin quest (DarkMem/Coin-2)
 coords.quest_select_dark_mem_ticket_2 = Location(2087, 1080)  -- Trade coin quest (DarkMem/Coin-2)
+coords.quest_select_dark_mem_swipe_1 = Location(2092, 1090)  -- Starting point of the swipe on the dark mem menu
+coords.quest_select_dark_mem_swipe_2 = Location(2092, 340)  -- Ending point of the swipe on the dark mem menu
 -- Main quest
 coords.quest_select_main_9 = Location(2116, 984)
 coords.quest_select_main_10 = Location(2487, 981)
