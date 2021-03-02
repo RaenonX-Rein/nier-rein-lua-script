@@ -26,6 +26,8 @@ coords.quest_start_btn = Location(1757, 1281)  -- Quest start button
 
 coords.quest_result_loop_close = Location(1485, 1279)  -- Close the loop result dialog
 coords.quest_result_single_close = Location(2367, 1354)  -- Close the single result dialog
+
+coords.quest_result_single_continue = Location(1803, 1312)  -- Continue (skip the wait)
 --endregion
 
 --region AP Refill

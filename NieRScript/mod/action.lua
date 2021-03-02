@@ -95,7 +95,9 @@ end
 ---Check if the current screen is an intermediate quest complete screen.
 function action.quest_check_complete()
     counter.unlock()
-    base.check_image(images.quest_complete_text, status.QUEST_COMPLETE)
+    if base.check_image(images.quest_complete_text, status.QUEST_COMPLETE) then
+        base.click_delay(coords.quest_result_single_continue)
+    end
 end
 
 ---Update the status to QUEST_IN_GAME_LOOP if the screen appears to be playing in auto with loop.
