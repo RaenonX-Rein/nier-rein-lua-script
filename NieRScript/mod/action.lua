@@ -10,13 +10,35 @@ sys = require(scriptPath() .. "mod/sys")
 
 local action = {}
 
-local function swipe_up_dark_mem()
+local function quest_dark_mem_swipe_up()
     setDragDropTiming(50, 50)  -- Press & hold for 50 ms; hold for 50 ms before release
     setDragDropStepCount(30)  -- Moving step count
     setDragDropStepInterval(10)  -- Step changing interval in ms
 
     dragDrop(coords.quest_select_dark_mem_swipe_1, coords.quest_select_dark_mem_swipe_2)
     wait(0.5)  -- Wait for swipe animation recovery
+end
+
+local function quest_handle_event_vh(vh_image, vh_coords)
+    if not base.check_image(images.quest_event_vh_difficulty_text) then
+        -- Not very hard difficulty
+        base.click_delay(coords.quest_select_event_difficulty)
+        return
+    end
+
+    if not base.check_image(vh_image) then
+        -- Is very hard difficulty & not found quest 10
+        setDragDropTiming(50, 50)  -- Press & hold for 50 ms; hold for 50 ms before release
+        setDragDropStepCount(30)  -- Moving step count
+        setDragDropStepInterval(10)  -- Step changing interval in ms
+
+        dragDrop(coords.quest_select_event_list_swipe_1, coords.quest_select_event_list_swipe_2)
+        wait(0.5)  -- Wait for swipe animation recovery
+        return
+    end
+
+    -- Found quest 10 and is very hard difficulty
+    base.click_delay(vh_coords)
 end
 
 ---Select the quest to auto if the current page is in quest selection menu.
@@ -34,10 +56,10 @@ function action.quest_select_quest()
     elseif quest_name == "DarkMem/Coin-1" then
         base.click_delay(coords.quest_select_dark_mem_coin_1)
     elseif quest_name == "DarkMem/Ticket-2" then
-        swipe_up_dark_mem()
+        quest_dark_mem_swipe_up()
         base.click_delay(coords.quest_select_dark_mem_ticket_2)
     elseif quest_name == "DarkMem/Coin-2" then
-        swipe_up_dark_mem()
+        quest_dark_mem_swipe_up()
         base.click_delay(coords.quest_select_dark_mem_coin_2)
     elseif quest_name == "Main/9" then
         base.click_delay(coords.quest_select_main_9)
@@ -45,6 +67,10 @@ function action.quest_select_quest()
         base.click_delay(coords.quest_select_main_10)
     elseif quest_name == "WeekRot" then
         base.click_delay(coords.quest_select_week_rot)
+    elseif quest_name == "EventVH/9" then
+        quest_handle_event_vh(images.quest_event_vh_quest_9_text, coords.quest_select_event_vh_9)
+    elseif quest_name == "EventVH/10" then
+        quest_handle_event_vh(images.quest_event_vh_quest_10_text, coords.quest_select_event_vh_10)
     else
         sys.terminate(string.format("Unknown quest to select: %s", quest_name))
     end
@@ -52,7 +78,7 @@ end
 
 ---Click on the quest start button until the in-game screen is confirmed, then update the status.
 ---If the message of insufficient AP is detected, status will be updated to QUEST_READY_INSUFFICIENT instead.
-function action.quest_start_quest()
+function action.quest_start_quest(click_start)
     if base.check_image(images.in_game_loop_icon, status.QUEST_IN_GAME_LOOP) then
         return
     end
@@ -61,7 +87,9 @@ function action.quest_start_quest()
         return
     end
 
-    base.click_delay(coords.quest_start_btn)
+    if click_start == nil or click_start then
+        base.click_delay(coords.quest_start_btn)
+    end
 end
 
 ---Check if the current screen is an intermediate quest complete screen.

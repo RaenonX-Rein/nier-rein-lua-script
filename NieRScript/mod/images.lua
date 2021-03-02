@@ -5,6 +5,21 @@ images.friend_icon = {
     region = Region(2527, 58, 68, 56);
 }
 
+images.quest_event_vh_difficulty_text = {
+    path = "quest-vh.png";
+    region = Region(2408, 226, 54, 47);
+}
+
+images.quest_event_vh_quest_9_text = {
+    path = "9-txt.png";
+    region = Region(1843, 749, 49, 61);
+}
+
+images.quest_event_vh_quest_10_text = {
+    path = "1-txt.png";
+    region = Region(1843, 1021, 45, 64);
+}
+
 images.quest_ready_indicator = {
     path = "quest-txt.png";
     region = Region(1478, 118, 66, 68);

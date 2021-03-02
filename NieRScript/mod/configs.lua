@@ -15,7 +15,7 @@ configs.toast_cd_sec = 5
 --region Game
 configs.total_games = 175
 
-configs.quest_select = "DarkMem/Ticket-2"
+configs.quest_select = "EventVH/9"
 -- DarkMem/Ticket-1
 -- DarkMem/Coin-1
 -- DarkMem/Ticket-2
@@ -23,6 +23,8 @@ configs.quest_select = "DarkMem/Ticket-2"
 -- Main/9
 -- Main/10
 -- WeekRot
+-- EventVH/9
+-- EventVH/10
 --endregion
 
 --region Script

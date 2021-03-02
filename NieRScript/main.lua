@@ -31,7 +31,7 @@ while true do
         action.fill_check_filled()
     elseif current_status == status.UNKNOWN then
         action.quest_select_quest()  -- Detect quest menu
-        action.quest_start_quest()  -- Detect in-game or insufficient AP
+        action.quest_start_quest(false)  -- Detect in-game or insufficient AP
     else
         sys.terminate(string.format("Unhandled state: %s\nScript terminated.", current_status))
     end
