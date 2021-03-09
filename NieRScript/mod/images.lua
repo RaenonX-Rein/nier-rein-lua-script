@@ -15,9 +15,19 @@ images.quest_event_vh_quest_9_text = {
     region = Region(1843, 749, 49, 61);
 }
 
+images.quest_dark_mem_2_coin_text = {
+    path = "coin-txt.png";
+    region = Region(1801, 755, 59, 57);
+}
+
 images.quest_event_vh_quest_10_text = {
     path = "1-txt.png";
     region = Region(1843, 1021, 45, 64);
+}
+
+images.quest_wrong_indicator_pod = {
+    path = "cancel-txt.png";
+    region = Region(1794, 1184, 58, 64);
 }
 
 images.quest_ready_indicator = {

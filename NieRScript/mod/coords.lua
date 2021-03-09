@@ -10,7 +10,7 @@ coords.quest_select_dark_mem_swipe_1 = Location(2092, 1090)  -- Starting point o
 coords.quest_select_dark_mem_swipe_2 = Location(2092, 340)  -- Ending point of the swipe on the dark mem menu
 -- Main quest
 coords.quest_select_main_9 = Location(2116, 984)
-coords.quest_select_main_10 = Location(2487, 981)
+coords.quest_select_main_10 = Location(2487, 984)
 -- Event
 coords.quest_select_event_difficulty = Location(2515, 251)  -- Click for switching the difficulty
 coords.quest_select_event_list_swipe_1 = Location(2092, 1090)  -- Starting point of the swipe on the event menu
@@ -18,7 +18,11 @@ coords.quest_select_event_list_swipe_2 = Location(2092, 360)  -- Ending point of
 coords.quest_select_event_vh_9 = Location(2107, 815)  -- Quest 9 button location
 coords.quest_select_event_vh_10 = Location(2114, 1100)  -- Quest 10 button location
 -- Others
-coords.quest_select_week_rot = Location(2077, 1089)  -- Weekly rotating sub-quest
+coords.quest_select_week_rot_exp = Location(2077, 793)  -- Weekly rotating sub-quest (Expert)
+coords.quest_select_week_rot_mst = Location(2077, 1089)  -- Weekly rotating sub-quest (Master)
+
+-- Actions
+coords.quest_select_wrong_pod = Location(1918, 1215)  -- Click the cancel button if accidentally goes into pod page
 --endregion
 
 --region Quest Control

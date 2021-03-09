@@ -11,12 +11,17 @@ sys = require(scriptPath() .. "mod/sys")
 local action = {}
 
 local function quest_dark_mem_swipe_up()
+    if base.check_image(images.quest_dark_mem_2_coin_text) then
+        return true  -- Found that the text for "coin" exists i.e. at the menu bottom
+    end
+
     setDragDropTiming(50, 50)  -- Press & hold for 50 ms; hold for 50 ms before release
     setDragDropStepCount(30)  -- Moving step count
     setDragDropStepInterval(10)  -- Step changing interval in ms
 
     dragDrop(coords.quest_select_dark_mem_swipe_1, coords.quest_select_dark_mem_swipe_2)
     wait(0.5)  -- Wait for swipe animation recovery
+    return false
 end
 
 local function quest_handle_event_vh(vh_image, vh_coords)
@@ -44,11 +49,24 @@ end
 ---Select the quest to auto if the current page is in quest selection menu.
 function action.quest_select_quest()
     if base.check_image(images.quest_ready_indicator, status.QUEST_READY) then
+        return  -- Found quest ready indicator, update the status and terminate
+    end
+
+    if not base.check_image(images.friend_icon) then
+        -- Only perform checks and quest selection click if friend icon is detected
+        -- This is because that clicking the quest may cause delays.
+
+        -- If the quest ready screen is not loaded after the clicks,
+        -- but readies right after the wait of the actions below,
+        -- then the actions below will be wrongly performed and causes bugs
         return
     end
 
-    -- If friend icon is detected, set the status to QUEST_READY
-    -- and click on the configured desired quest to enter the quest ready screen
+    if base.check_image(images.quest_wrong_indicator_pod) then
+        -- Accidentally goes into pod edit page, go back
+        base.click_delay(coords.quest_select_wrong_pod)
+    end
+
     local quest_name = configs.quest_select
 
     if quest_name == "DarkMem/Ticket-1" then
@@ -56,17 +74,23 @@ function action.quest_select_quest()
     elseif quest_name == "DarkMem/Coin-1" then
         base.click_delay(coords.quest_select_dark_mem_coin_1)
     elseif quest_name == "DarkMem/Ticket-2" then
-        quest_dark_mem_swipe_up()
+        if not quest_dark_mem_swipe_up() then
+            return
+        end
         base.click_delay(coords.quest_select_dark_mem_ticket_2)
     elseif quest_name == "DarkMem/Coin-2" then
-        quest_dark_mem_swipe_up()
+        if not quest_dark_mem_swipe_up() then
+            return
+        end
         base.click_delay(coords.quest_select_dark_mem_coin_2)
     elseif quest_name == "Main/9" then
         base.click_delay(coords.quest_select_main_9)
     elseif quest_name == "Main/10" then
         base.click_delay(coords.quest_select_main_10)
-    elseif quest_name == "WeekRot" then
-        base.click_delay(coords.quest_select_week_rot)
+    elseif quest_name == "WeekRot/Exp" then
+        base.click_delay(coords.quest_select_week_rot_exp)
+    elseif quest_name == "WeekRot/Mst" then
+        base.click_delay(coords.quest_select_week_rot_mst)
     elseif quest_name == "EventVH/9" then
         quest_handle_event_vh(images.quest_event_vh_quest_9_text, coords.quest_select_event_vh_9)
     elseif quest_name == "EventVH/10" then
