@@ -15,11 +15,12 @@ configs.toast_cd_sec = 5
 --region Game
 configs.total_games = 999
 
-configs.quest_select = "DarkMem/Coin-2"
+configs.quest_select = "Main/4"
 -- DarkMem/Ticket-1
 -- DarkMem/Coin-1
 -- DarkMem/Ticket-2
 -- DarkMem/Coin-2
+-- Main/4
 -- Main/9
 -- Main/10
 -- WeekRot/Exp

@@ -83,6 +83,8 @@ function action.quest_select_quest()
             return
         end
         base.click_delay(coords.quest_select_dark_mem_coin_2)
+    elseif quest_name == "Main/4" then
+        base.click_delay(coords.quest_select_main_4)
     elseif quest_name == "Main/9" then
         base.click_delay(coords.quest_select_main_9)
     elseif quest_name == "Main/10" then

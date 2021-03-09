@@ -9,6 +9,7 @@ coords.quest_select_dark_mem_ticket_2 = Location(2087, 1080)  -- Trade coin ques
 coords.quest_select_dark_mem_swipe_1 = Location(2092, 1090)  -- Starting point of the swipe on the dark mem menu
 coords.quest_select_dark_mem_swipe_2 = Location(2092, 340)  -- Ending point of the swipe on the dark mem menu
 -- Main quest
+coords.quest_select_main_4 = Location(2116, 549)
 coords.quest_select_main_9 = Location(2116, 984)
 coords.quest_select_main_10 = Location(2487, 984)
 -- Event
