@@ -13,9 +13,9 @@ configs.toast_cd_sec = 5
 --endregion
 
 --region Game
-configs.total_games = 999
+configs.total_games = 100
 
-configs.quest_select = "Main/4"
+configs.quest_select = "Event/CHL"
 -- DarkMem/Ticket-1
 -- DarkMem/Coin-1
 -- DarkMem/Ticket-2
@@ -25,8 +25,9 @@ configs.quest_select = "Main/4"
 -- Main/10
 -- WeekRot/Exp
 -- WeekRot/Mst
--- EventVH/9
--- EventVH/10
+-- Event/VH-9
+-- Event/VH-10
+-- Event/CHL
 --endregion
 
 --region Script

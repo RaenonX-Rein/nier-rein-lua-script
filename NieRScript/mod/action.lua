@@ -93,10 +93,12 @@ function action.quest_select_quest()
         base.click_delay(coords.quest_select_week_rot_exp)
     elseif quest_name == "WeekRot/Mst" then
         base.click_delay(coords.quest_select_week_rot_mst)
-    elseif quest_name == "EventVH/9" then
+    elseif quest_name == "Event/VH-9" then
         quest_handle_event_vh(images.quest_event_vh_quest_9_text, coords.quest_select_event_vh_9)
-    elseif quest_name == "EventVH/10" then
+    elseif quest_name == "Event/VH-10" then
         quest_handle_event_vh(images.quest_event_vh_quest_10_text, coords.quest_select_event_vh_10)
+    elseif quest_name == "Event/CHL" then
+        base.click_delay(coords.quest_select_event_challenge)
     else
         sys.terminate(string.format("Unknown quest to select: %s", quest_name))
     end

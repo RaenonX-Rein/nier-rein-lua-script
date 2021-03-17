@@ -18,6 +18,7 @@ coords.quest_select_event_list_swipe_1 = Location(2092, 1090)  -- Starting point
 coords.quest_select_event_list_swipe_2 = Location(2092, 360)  -- Ending point of the swipe on the event menu
 coords.quest_select_event_vh_9 = Location(2107, 815)  -- Quest 9 button location
 coords.quest_select_event_vh_10 = Location(2114, 1100)  -- Quest 10 button location
+coords.quest_select_event_challenge = Location(2133, 1107)  -- Bottom of the list of the challenge quests
 -- Others
 coords.quest_select_week_rot_exp = Location(2077, 793)  -- Weekly rotating sub-quest (Expert)
 coords.quest_select_week_rot_mst = Location(2077, 1089)  -- Weekly rotating sub-quest (Master)
