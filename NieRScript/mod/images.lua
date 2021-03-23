@@ -1,3 +1,5 @@
+utils = require(scriptPath() .. "mod/utils")
+
 local images = {}
 
 images.friend_icon = {
@@ -50,9 +52,39 @@ images.in_game_loop_icon = {
     region = Region(2508, 47, 40, 39);
 }
 
+images.in_game_2x_icon = {
+    path = "in-game-2x.png";
+    region = Region(2418, 20, 47, 56);
+}
+
 images.in_game_menu_back_btn = {
     path = "back-txt.png";
     region = Region(1424, 1250, 66, 62);
+}
+
+images.in_game_wave_3 = {
+    path = "wave-3.png";
+    region = Region(2845, 127, 41, 51);
+}
+
+images.in_game_drop_ssr_0 = {
+    path = "0-drop-txt.png";
+    region = Region(1986, 342, 43, 53);
+}
+
+images.in_game_drop_ssr_1 = {
+    path = "1-drop-txt.png";
+    region = Region(1990, 341, 33, 53);
+}
+
+images.in_game_drop_1 = {
+    path = "1-drop-txt.png";
+    region = Region(1986, 342, 43, 53);
+}
+
+images.in_game_abort_confirm_txt = {
+    path = "abort-txt.png";
+    region = Region(1703, 635, 64, 68);
 }
 
 images.quest_complete_text = {
@@ -84,5 +116,10 @@ images.ap_refill_refilled_indicator = {
     path = "close-txt.png";
     region = Region(1402, 1080, 64, 63)
 }
+
+-- Correct all regions before use
+for name, image in pairs(images) do
+    images[name].region = utils.correct_region(image.region)
+end
 
 return images

@@ -1,8 +1,13 @@
 --region Imports
 action = require(scriptPath() .. "mod/action")
+configs = require(scriptPath() .. "mod/configs")
 status = require(scriptPath() .. "mod/status")
 sys = require(scriptPath() .. "mod/sys")
 --endregion
+
+Settings:set("MinSimilarity", configs.min_similarity)
+-- Enables the control in the navbar area
+setImmersiveMode(true)
 
 while true do
     local current_status = status.get_current()
@@ -13,8 +18,17 @@ while true do
         action.quest_start_quest()
     elseif current_status == status.QUEST_IN_GAME_LOOP then
         action.quest_close_menu()
-        action.quest_check_complete()
+        action.quest_check_single_loop_complete()
         action.quest_wait_result_loop()
+    elseif current_status == status.QUEST_IN_GAME_SSR_PRE_WAVE_3 then
+        action.quest_close_menu()
+        action.quest_check_into_wave_3()
+    elseif current_status == status.QUEST_IN_GAME_SSR_AT_WAVE_3 then
+        action.quest_check_ssr_drop()
+    elseif current_status == status.QUEST_IN_GAME_SSR_DROPPED then
+        action.quest_check_complete_ssr_dropped()
+    elseif current_status == status.QUEST_IN_GAME_ABORT_CONFIRM then
+        action.quest_confirm_abort()
     elseif current_status == status.QUEST_COMPLETE then
         action.quest_wait_in_game_loop()
     elseif current_status == status.QUEST_RESULT_LOOP then

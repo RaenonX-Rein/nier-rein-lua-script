@@ -1,9 +1,9 @@
 --region Imports
 base = require(scriptPath() .. "mod/base")
 coords = require(scriptPath() .. "mod/coords")
-images = require(scriptPath() .. "mod/images")
 configs = require(scriptPath() .. "mod/configs")
 counter = require(scriptPath() .. "mod/counter")
+images = require(scriptPath() .. "mod/images")
 status = require(scriptPath() .. "mod/status")
 sys = require(scriptPath() .. "mod/sys")
 --endregion
@@ -83,6 +83,12 @@ function action.quest_select_quest()
             return
         end
         base.click_delay(coords.quest_select_dark_mem_coin_2)
+    elseif quest_name == "DarkMem/Std" then
+        base.click_delay(coords.quest_select_dark_mem_std)
+    elseif quest_name == "DarkMem/Exp" then
+        base.click_delay(coords.quest_select_dark_mem_exp)
+    elseif quest_name == "DarkMem/Mst" then
+        base.click_delay(coords.quest_select_dark_mem_mst)
     elseif quest_name == "Main/4" then
         base.click_delay(coords.quest_select_main_4)
     elseif quest_name == "Main/9" then
@@ -106,8 +112,15 @@ end
 
 ---Click on the quest start button until the in-game screen is confirmed, then update the status.
 ---If the message of insufficient AP is detected, status will be updated to QUEST_READY_INSUFFICIENT instead.
-function action.quest_start_quest(click_start)
-    if base.check_image(images.in_game_loop_icon, status.QUEST_IN_GAME_LOOP) then
+function action.quest_start_quest(click_start, check_ap_refill)
+    if check_ap_refill == nil then
+        check_ap_refill = true
+    end
+
+    -- Check quest start indicators
+    if not configs.pass_only_ssr_drop and base.check_image(images.in_game_loop_icon, status.QUEST_IN_GAME_LOOP) then
+        return
+    elseif configs.pass_only_ssr_drop and base.check_image(images.in_game_2x_icon, status.QUEST_IN_GAME_SSR_PRE_WAVE_3) then
         return
     end
 
@@ -115,23 +128,82 @@ function action.quest_start_quest(click_start)
         return
     end
 
+    if check_ap_refill and base.check_image(images.ap_refill_indicator, status.FILL_AP_ITEM) then
+        return
+    end
+
+    -- Only click the start button if `click_start` is not given or `true`
     if click_start == nil or click_start then
         base.click_delay(coords.quest_start_btn)
     end
 end
 
+---Check if the current progress is wave 3.
+function action.quest_check_into_wave_3()
+    counter.unlock()
+    base.check_image(images.in_game_wave_3, status.QUEST_IN_GAME_SSR_AT_WAVE_3)
+end
+
+---Check the current SSR drop status and change to corresponding status.
+function action.quest_check_ssr_drop()
+    -- If quest abort confirm dialog is found, change the status and terminate the action
+    if base.check_image(images.in_game_abort_confirm_txt, status.QUEST_IN_GAME_ABORT_CONFIRM) then
+        return
+    end
+
+    -- Click the menu button
+    if not action.quest_close_menu(false) then
+        base.click_delay(coords.quest_menu_btn)
+    end
+
+    -- Click abort button if no SSR drop
+    if base.check_image(images.in_game_drop_ssr_0) then
+        base.click_delay(coords.quest_abort_btn)
+        return
+    end
+
+    -- Close the menu if dropped
+    if base.check_image(images.in_game_drop_ssr_1, status.QUEST_IN_GAME_SSR_DROPPED) then
+        action.quest_close_menu()
+        return
+    end
+end
+
+---Confirm the abort dialog.
+function action.quest_confirm_abort()
+    if base.check_image(images.in_game_abort_confirm_txt) then
+        base.click_delay(coords.quest_abort_confirm_btn)
+        counter.count_fail()
+    end
+
+    -- Check back to main menu
+    base.check_image(images.friend_icon, status.QUEST_SELECT)
+end
+
 ---Check if the current screen is an intermediate quest complete screen.
-function action.quest_check_complete()
+function action.quest_check_single_loop_complete()
     counter.unlock()
     if base.check_image(images.quest_complete_text, status.QUEST_COMPLETE) then
         base.click_delay(coords.quest_result_single_continue)
     end
 end
 
----Update the status to QUEST_IN_GAME_LOOP if the screen appears to be playing in auto with loop.
+---Check if the quest is completed. (Single run)
+function action.quest_check_complete_ssr_dropped()
+    counter.count_pass()
+
+    sys.terminate("SSR Dropped")
+
+    -- Terminate the script early
+    --if base.check_image(images.result_single_indicator, status.QUEST_RESULT_SINGLE) then
+    --    base.click_delay(coords.quest_result_single_close)
+    --end
+end
+
+---Update the status to the initial in-game status if the screen appears to be playing in auto with loop.
 function action.quest_wait_in_game_loop()
     counter.count_pass()
-    base.check_image(images.in_game_loop_icon, status.QUEST_IN_GAME_LOOP)
+    base.check_image(images.in_game_loop_icon, status.initial_in_game())
 end
 
 ---Update the status to QUEST_RESULT_LOOP if the looped result dialog popped up.
@@ -179,10 +251,8 @@ function action.fill_ap_confirm()
     if not base.check_image(images.ap_refill_refilled_indicator, status.FILL_AP_FILLED) then
         base.click_delay(coords.refill_confirm)
     end
-    -- Sometimes refill confirmation dialog could be dismissed by the lagged click,
-    -- which causes the screen back to the quest ready state.
-    -- Also, the refill confirm button location is almost the same as start quest button
-    action.quest_start_quest()
+
+    action.quest_start_quest(true, false)
 end
 
 ---Close the AP refill confirmation dialog.
@@ -193,9 +263,15 @@ function action.fill_check_filled()
 end
 
 ---Close the in-battle menu.
-function action.quest_close_menu()
+function action.quest_close_menu(dismiss)
+    if dismiss == nil then
+        dismiss = true
+    end
+
     base.check_image(images.in_game_menu_back_btn, status.get_current(), function(loc)
-        base.click_delay(loc)
+        if dismiss then
+            base.click_delay(loc)
+        end
     end)
 end
 

@@ -40,7 +40,7 @@ function logger.screenshot_message_file_suffix(message, file_suffix)
 
 	logger.log_message(string.format("Screenshot saved at %s. Message: %s\n", fileName, message))
 
-	local screen = getAppUsableScreenSize()
+	local screen = getRealScreenSize()
 	local reg = Region(0, 0, screen:getX(), screen:getY())
 	reg:save(fileName)
 
