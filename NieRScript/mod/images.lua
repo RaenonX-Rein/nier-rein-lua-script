@@ -19,7 +19,7 @@ images.quest_event_vh_quest_9_text = {
 
 images.quest_dark_mem_2_coin_text = {
     path = "coin-txt.png";
-    region = Region(1801, 755, 59, 57);
+    region = Region(1800, 783, 61, 53);
 }
 
 images.quest_event_vh_quest_10_text = {

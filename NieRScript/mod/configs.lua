@@ -18,11 +18,12 @@ configs.toast_cd_sec = 5
 configs.total_games = 100
 configs.pass_only_ssr_drop = true
 
-configs.quest_select = "DarkMem/Std"
+configs.quest_select = "DarkMem/Coin-2"
 -- DarkMem/Ticket-1
 -- DarkMem/Coin-1
 -- DarkMem/Ticket-2
 -- DarkMem/Coin-2
+-- DarkMem/Std
 -- DarkMem/Exp
 -- DarkMem/Mst
 -- Main/4

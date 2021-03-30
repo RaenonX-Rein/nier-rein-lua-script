@@ -20,7 +20,7 @@ local function quest_dark_mem_swipe_up()
     setDragDropStepInterval(10)  -- Step changing interval in ms
 
     dragDrop(coords.quest_select_dark_mem_swipe_1, coords.quest_select_dark_mem_swipe_2)
-    wait(0.5)  -- Wait for swipe animation recovery
+    wait(1.0)  -- Wait for swipe animation recovery
     return false
 end
 
