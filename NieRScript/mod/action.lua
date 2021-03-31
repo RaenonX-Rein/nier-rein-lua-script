@@ -89,8 +89,16 @@ function action.quest_select_quest()
         base.click_delay(coords.quest_select_dark_mem_exp)
     elseif quest_name == "DarkMem/Mst" then
         base.click_delay(coords.quest_select_dark_mem_mst)
+    elseif quest_name == "Main/1" then
+        base.click_delay(coords.quest_select_main_1)
     elseif quest_name == "Main/4" then
         base.click_delay(coords.quest_select_main_4)
+    elseif quest_name == "Main/6" then
+        base.click_delay(coords.quest_select_main_6)
+    elseif quest_name == "Main/7" then
+        base.click_delay(coords.quest_select_main_7)
+    elseif quest_name == "Main/8" then
+        base.click_delay(coords.quest_select_main_8)
     elseif quest_name == "Main/9" then
         base.click_delay(coords.quest_select_main_9)
     elseif quest_name == "Main/10" then

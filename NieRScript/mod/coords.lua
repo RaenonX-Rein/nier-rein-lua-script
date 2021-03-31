@@ -14,7 +14,11 @@ coords.quest_select_dark_mem_mst = Location(2090, 901)  -- Master dark memory
 coords.quest_select_dark_mem_swipe_1 = Location(2092, 1090)  -- Starting point of the swipe on the dark mem menu
 coords.quest_select_dark_mem_swipe_2 = Location(2092, 340)  -- Ending point of the swipe on the dark mem menu
 -- Main quest
+coords.quest_select_main_1 = Location(986, 554)
 coords.quest_select_main_4 = Location(2116, 549)
+coords.quest_select_main_6 = Location(984, 991)
+coords.quest_select_main_7 = Location(1360, 971)
+coords.quest_select_main_8 = Location(1747, 979)
 coords.quest_select_main_9 = Location(2116, 984)
 coords.quest_select_main_10 = Location(2487, 984)
 -- Event

@@ -16,9 +16,9 @@ configs.toast_cd_sec = 5
 
 --region Game
 configs.total_games = 100
-configs.pass_only_ssr_drop = true
+configs.pass_only_ssr_drop = false
 
-configs.quest_select = "DarkMem/Coin-2"
+configs.quest_select = "Main/1"
 -- DarkMem/Ticket-1
 -- DarkMem/Coin-1
 -- DarkMem/Ticket-2
@@ -26,7 +26,11 @@ configs.quest_select = "DarkMem/Coin-2"
 -- DarkMem/Std
 -- DarkMem/Exp
 -- DarkMem/Mst
+-- Main/1
 -- Main/4
+-- Main/6
+-- Main/7
+-- Main/8
 -- Main/9
 -- Main/10
 -- WeekRot/Exp
