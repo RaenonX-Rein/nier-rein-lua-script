@@ -18,7 +18,7 @@ configs.toast_cd_sec = 5
 configs.total_games = 100
 configs.pass_only_ssr_drop = false
 
-configs.quest_select = "Main/1"
+configs.quest_select = "Event/3"
 -- DarkMem/Ticket-1
 -- DarkMem/Coin-1
 -- DarkMem/Ticket-2
@@ -35,6 +35,7 @@ configs.quest_select = "Main/1"
 -- Main/10
 -- WeekRot/Exp
 -- WeekRot/Mst
+-- Event/3
 -- Event/VH-9
 -- Event/VH-10
 -- Event/CHL

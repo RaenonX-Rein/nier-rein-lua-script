@@ -12,6 +12,11 @@ images.quest_event_vh_difficulty_text = {
     region = Region(2408, 226, 54, 47);
 }
 
+images.quest_event_3_text = {
+    path = "3-txt.png";
+    region = Region(1822, 301, 92, 932);
+}
+
 images.quest_event_vh_quest_9_text = {
     path = "9-txt.png";
     region = Region(1843, 749, 49, 61);

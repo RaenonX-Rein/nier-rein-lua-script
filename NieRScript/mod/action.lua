@@ -107,6 +107,10 @@ function action.quest_select_quest()
         base.click_delay(coords.quest_select_week_rot_exp)
     elseif quest_name == "WeekRot/Mst" then
         base.click_delay(coords.quest_select_week_rot_mst)
+    elseif quest_name == "Event/3" then
+        base.check_image(images.quest_event_3_text, nil, function(loc)
+            base.click_delay(loc)
+        end)
     elseif quest_name == "Event/VH-9" then
         quest_handle_event_vh(images.quest_event_vh_quest_9_text, coords.quest_select_event_vh_9)
     elseif quest_name == "Event/VH-10" then
