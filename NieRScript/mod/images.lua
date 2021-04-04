@@ -49,7 +49,7 @@ images.start_btn_border = {
 
 images.unable_to_start_auto = {
     path = "auto-a-txt.png";
-    region = Region(951, 701, 34, 37);
+    region = Region(941, 690, 53, 59);
 }
 
 images.in_game_loop_icon = {

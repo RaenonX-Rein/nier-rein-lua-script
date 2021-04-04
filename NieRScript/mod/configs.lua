@@ -15,10 +15,10 @@ configs.toast_cd_sec = 5
 --endregion
 
 --region Game
-configs.total_games = 100
+configs.total_games = 610
 configs.pass_only_ssr_drop = false
 
-configs.quest_select = "Event/3"
+configs.quest_select = "DarkMem/Coin-2"
 -- DarkMem/Ticket-1
 -- DarkMem/Coin-1
 -- DarkMem/Ticket-2
