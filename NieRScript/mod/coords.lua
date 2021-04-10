@@ -25,7 +25,6 @@ coords.quest_select_main_10 = Location(2487, 984)
 coords.quest_select_event_difficulty = Location(2515, 251)  -- Click for switching the difficulty
 coords.quest_select_event_list_swipe_1 = Location(2092, 1090)  -- Starting point of the swipe on the event menu
 coords.quest_select_event_list_swipe_2 = Location(2092, 360)  -- Ending point of the swipe on the event menu
-coords.quest_select_event_vh_9 = Location(2107, 815)  -- Quest 9 button location
 coords.quest_select_event_vh_10 = Location(2114, 1100)  -- Quest 10 button location
 coords.quest_select_event_challenge = Location(2133, 1107)  -- Bottom of the list of the challenge quests
 -- Others

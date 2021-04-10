@@ -42,7 +42,7 @@ local function quest_handle_event_vh(vh_image, vh_coords)
         return
     end
 
-    -- Found quest 10 and is very hard difficulty
+    -- Found quest and is VH
     base.click_delay(vh_coords)
 end
 
@@ -111,8 +111,10 @@ function action.quest_select_quest()
         base.check_image(images.quest_event_3_text, nil, function(loc)
             base.click_delay(loc)
         end)
-    elseif quest_name == "Event/VH-9" then
-        quest_handle_event_vh(images.quest_event_vh_quest_9_text, coords.quest_select_event_vh_9)
+    elseif quest_name == "Event/9" then
+        base.check_image(images.quest_event_9_text, nil, function(loc)
+            base.click_delay(loc)
+        end)
     elseif quest_name == "Event/VH-10" then
         quest_handle_event_vh(images.quest_event_vh_quest_10_text, coords.quest_select_event_vh_10)
     elseif quest_name == "Event/CHL" then

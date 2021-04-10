@@ -17,9 +17,9 @@ images.quest_event_3_text = {
     region = Region(1822, 301, 92, 932);
 }
 
-images.quest_event_vh_quest_9_text = {
+images.quest_event_9_text = {
     path = "9-txt.png";
-    region = Region(1843, 749, 49, 61);
+    region = Region(1822, 301, 92, 932);
 }
 
 images.quest_dark_mem_2_coin_text = {
