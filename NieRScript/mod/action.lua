@@ -253,10 +253,37 @@ function action.fill_ap()
     action.quest_wait_in_game_loop()
 end
 
+local function fill_ap_item_swipe_up()
+    if base.check_image(images.ap_refill_ap_potion_lg) then
+        return true  -- Found that the text for AP potion L exists i.e. at the fill item list bottom
+    end
+
+    setDragDropTiming(50, 50)  -- Press & hold for 50 ms; hold for 50 ms before release
+    setDragDropStepCount(30)  -- Moving step count
+    setDragDropStepInterval(10)  -- Step changing interval in ms
+
+    dragDrop(coords.refill_item_swipe_1, coords.refill_item_swipe_2)
+    wait(1.0)  -- Wait for swipe animation recovery
+    return false
+end
+
 ---Select the item to use for filling AP.
 function action.fill_ap_select_item()
-    if not base.check_image(images.ap_refill_confirm_indicator, status.FILL_AP_CONFIRM) then
+    if base.check_image(images.ap_refill_confirm_indicator, status.FILL_AP_CONFIRM) then
+        return
+    end
+
+    local fill_item = configs.fill_item
+
+    if fill_item == "Gems" then
         base.click_delay(coords.refill_by_gem)
+    elseif fill_item == "AP/L" then
+        if not fill_ap_item_swipe_up() then
+            return
+        end
+        base.click_delay(coords.refill_by_pot_lg)
+    else
+        sys.terminate(string.format("Unknown AP fill item: %s", quest_name))
     end
 end
 

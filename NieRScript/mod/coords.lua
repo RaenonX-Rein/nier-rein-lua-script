@@ -49,7 +49,10 @@ coords.quest_result_single_continue = Location(1803, 1312)  -- Continue (skip th
 
 --region AP Refill
 coords.refill_quest_ready = Location(1981, 1161)  -- "+" button for AP refill in quest ready page
+coords.refill_item_swipe_1 = Location(1410, 1080)  -- Swipe up the fill item menu (Start)
+coords.refill_item_swipe_2 = Location(1410, 580)  -- Swipe up the fill item menu (End)
 coords.refill_by_gem = Location(1477, 522)  -- Click to refill by Gem
+coords.refill_by_pot_lg = Location(1485, 1075)  -- Click to refill by AP Potion L
 coords.refill_confirm = Location(1760, 1282)  -- Confirm AP refill
 coords.refill_filled_close = Location(1484, 1115)  -- Close the AP filled dialog
 --endregion

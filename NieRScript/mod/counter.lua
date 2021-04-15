@@ -1,4 +1,5 @@
 --region Imports
+configs = require(scriptPath() .. "mod/configs")
 logger = require(scriptPath() .. "mod/logger")
 --endregion
 

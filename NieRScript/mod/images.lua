@@ -112,6 +112,11 @@ images.ap_refill_indicator = {
     region = Region(1539, 118, 69, 71);
 }
 
+images.ap_refill_ap_potion_lg = {
+    path = "ap-potion-lg-txt.png";
+    region = Region(1496, 407, 72, 796);
+}
+
 images.ap_refill_confirm_indicator = {
     path = "confirm-txt.png";
     region = Region(1704, 1250, 62, 62);
