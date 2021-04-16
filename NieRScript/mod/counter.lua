@@ -9,7 +9,7 @@ local count_pass = 0
 local count_fail = 0
 local counter_lock = true
 
-local csv_stream = io.open(scriptPath() .. "stats.csv", "a+")
+local csv_stream = io.open(scriptPath() .. configs.get_status_file_name() .. ".csv", "a+")
 
 --region Accessors
 function counter.get_count_pass()

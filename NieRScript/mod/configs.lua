@@ -43,6 +43,19 @@ configs.quest_select = "DarkMem/Std"
 -- Event/9
 -- Event/VH-10
 -- Event/CHL
+
+function configs.get_status_file_name()
+    local q = configs.quest_select
+    if q == "DarkMem/Std" then
+        return "stats-std"
+    elseif q == "DarkMem/Exp" then
+        return "stats-exp"
+    elseif q == "DarkMem/Mst" then
+        return "stats-mst"
+    end
+
+    return "stats"
+end
 --endregion
 
 --region Script
