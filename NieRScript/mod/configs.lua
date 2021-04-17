@@ -20,6 +20,7 @@ configs.fill_item = "AP/L"
 -- AP/L
 
 configs.quests = {
+    "--Row--",
     "DarkMem/Ticket-1",
     "DarkMem/Coin-1",
     "DarkMem/Ticket-2",
@@ -27,6 +28,7 @@ configs.quests = {
     "DarkMem/Std",
     "DarkMem/Exp",
     "DarkMem/Mst",
+    "--Row--",
     "Main/1",
     "Main/4",
     "Main/6",
@@ -34,12 +36,15 @@ configs.quests = {
     "Main/8",
     "Main/9",
     "Main/10",
+    "--Row--",
     "WeekRot/Exp",
     "WeekRot/Mst",
+    "--Row--",
     "Event/3",
     "Event/9",
     "Event/VH-10",
     "Event/CHL",
+    "--Row--",
     "Memory/Sergeant10",
 }
 --endregion
@@ -59,7 +64,11 @@ local function show_quest_config_dialog()
     newRow()
     addRelativeRadioGroup("config_selected_quest_idx", 1, 4)
     for idx, quest in ipairs(configs.quests) do
-        addRadioButton(quest, idx)
+        if quest == "--Row--" then
+            addRelativeRadioGroupNewRow()
+        else
+            addRadioButton(quest, idx)
+        end
     end
     newRow()
     addTextView("Play count: ")
