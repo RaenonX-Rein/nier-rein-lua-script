@@ -65,7 +65,7 @@ local function show_quest_config_dialog()
     addRelativeRadioGroup("config_selected_quest_idx", 1, 4)
     for idx, quest in ipairs(configs.quests) do
         if quest == "--Row--" then
-            addRelativeRadioGroupNewRow()
+            newRow()
         else
             addRadioButton(quest, idx)
         end
