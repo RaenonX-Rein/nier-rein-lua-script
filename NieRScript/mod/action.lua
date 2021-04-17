@@ -11,17 +11,23 @@ sys = require(scriptPath() .. "mod/sys")
 local action = {}
 
 local function quest_dark_mem_swipe_up()
-    if base.check_image(images.quest_dark_mem_2_coin_text) then
-        return true  -- Found that the text for "coin" exists i.e. at the menu bottom
-    end
+    return base.check_image_swipe_up(
+        images.quest_dark_mem_2_coin_text,
+        coords.quest_select_dark_mem_swipe_1,
+        coords.quest_select_dark_mem_swipe_2
+    )
+end
 
-    setDragDropTiming(50, 50)  -- Press & hold for 50 ms; hold for 50 ms before release
-    setDragDropStepCount(30)  -- Moving step count
-    setDragDropStepInterval(10)  -- Step changing interval in ms
-
-    dragDrop(coords.quest_select_dark_mem_swipe_1, coords.quest_select_dark_mem_swipe_2)
-    wait(1.0)  -- Wait for swipe animation recovery
-    return false
+local function quest_select_memory_10()
+    return base.check_image_swipe_up(
+        images.quest_mem_10_text,
+        coords.quest_select_memory_10_swipe_1,
+        coords.quest_select_memory_10_swipe_2,
+        nil,
+        function(loc)
+            base.click_delay(loc)
+        end
+    )
 end
 
 local function quest_handle_event_vh(vh_image, vh_coords)
@@ -119,6 +125,8 @@ function action.quest_select_quest()
         quest_handle_event_vh(images.quest_event_vh_quest_10_text, coords.quest_select_event_vh_10)
     elseif quest_name == "Event/CHL" then
         base.click_delay(coords.quest_select_event_challenge)
+    elseif quest_name == "Memory/Sergeant10" then
+        quest_select_memory_10()
     else
         sys.terminate(string.format("Unknown quest to select: %s", quest_name))
     end
@@ -132,9 +140,9 @@ function action.quest_start_quest(click_start, check_ap_refill)
     end
 
     -- Check quest start indicators
-    if not configs.pass_only_ssr_drop and base.check_image(images.in_game_loop_icon, status.QUEST_IN_GAME_LOOP) then
+    if not configs.get_not_using_battery_save() and base.check_image(images.in_game_loop_icon, status.QUEST_IN_GAME_LOOP) then
         return
-    elseif configs.pass_only_ssr_drop and base.check_image(images.in_game_2x_icon, status.QUEST_IN_GAME_SSR_PRE_WAVE_3) then
+    elseif configs.get_not_using_battery_save() and base.check_image(images.in_game_2x_icon, status.QUEST_IN_GAME_PRE_WAVE_3) then
         return
     end
 
@@ -142,7 +150,7 @@ function action.quest_start_quest(click_start, check_ap_refill)
         return
     end
 
-    if check_ap_refill and base.check_image(images.ap_refill_indicator, status.FILL_AP_ITEM) then
+    if check_ap_refill and action.check_ap_refill() then
         return
     end
 
@@ -155,7 +163,29 @@ end
 ---Check if the current progress is wave 3.
 function action.quest_check_into_wave_3()
     counter.unlock()
-    base.check_image(images.in_game_wave_3, status.QUEST_IN_GAME_SSR_AT_WAVE_3)
+    base.check_image(images.in_game_wave_3, status.QUEST_IN_GAME_AT_WAVE_3)
+
+    local quest_name = configs.quest_select
+
+    if quest_name == "Memory/Sergeant10" then
+        -- Click AUTO to disable if enabled
+        base.check_image(images.in_game_is_auto, nil, function(loc)
+            base.click_delay(loc)
+        end)
+    end
+end
+
+---Actions to be performed at wave 3.
+function action.quest_handle_at_wave_3()
+    local quest_name = configs.quest_select
+
+    if quest_name == "DarkMem/Std" or quest_name == "DarkMem/Exp" or quest_name == "DarkMem/Mst" then
+        action.quest_check_ssr_drop()
+    elseif quest_name == "Memory/Sergeant10" then
+        action.quest_sergeant_10_wave_3()
+    else
+        sys.terminate(string.format("Unknown quest to perform wave 3 action: %s", quest_name))
+    end
 end
 
 ---Check the current SSR drop status and change to corresponding status.
@@ -183,6 +213,21 @@ function action.quest_check_ssr_drop()
     end
 end
 
+---Actions to perform during wave 3 of sergeant memory 10.
+function action.quest_sergeant_10_wave_3()
+    -- Click AUTO if is not auto
+    base.check_image(images.in_game_is_not_auto, nil, function(loc)
+        base.click_delay(loc)
+    end)
+
+    -- Target the sergeant if not yet targeted
+    if not base.check_image(images.in_game_target_sergeant) then
+        base.click_delay(coords.in_game_target_sergeant)
+    end
+
+    action.quest_check_result_single()
+end
+
 ---Confirm the abort dialog.
 function action.quest_confirm_abort()
     if base.check_image(images.in_game_abort_confirm_txt) then
@@ -198,7 +243,7 @@ end
 function action.quest_check_single_loop_complete()
     counter.unlock()
     if base.check_image(images.quest_complete_text, status.QUEST_COMPLETE) then
-        base.click_delay(coords.quest_result_single_continue)
+        base.click_delay(coords.quest_result_loop_continue)
     end
 end
 
@@ -206,12 +251,8 @@ end
 function action.quest_check_complete_ssr_dropped()
     counter.count_pass()
 
-    sys.terminate("SSR Dropped")
-
     -- Terminate the script early
-    --if base.check_image(images.result_single_indicator, status.QUEST_RESULT_SINGLE) then
-    --    base.click_delay(coords.quest_result_single_close)
-    --end
+    sys.terminate("SSR Dropped")
 end
 
 ---Update the status to the initial in-game status if the screen appears to be playing in auto with loop.
@@ -231,21 +272,36 @@ function action.quest_check_result_loop()
         wait(5)  -- 5 secs wait for the animation to show the rewards for capturing
         logger.screenshot_message_file_suffix("Drop in a loop", "drop")
     end
-    if not base.check_image(images.result_single_indicator, status.QUEST_RESULT_SINGLE) then
-        base.click_delay(coords.quest_result_loop_close)
+    if not base.check_image(images.result_loop_single_indicator, status.QUEST_RESULT_LOOP_SINGLE) then
+        base.click_delay(coords.quest_result_loop_result_close)
     end
 end
 
----Check the single game result to proceed to go back to the quest select screen.
-function action.quest_check_result_single()
+---If the game loop is single, proceed going back to the quest select screen.
+function action.quest_check_result_loop_single()
     if not base.check_image(images.friend_icon, status.QUEST_SELECT) then
-        base.click_delay(coords.quest_result_single_close)
+        base.click_delay(coords.quest_result_loop_single_close)
     end
+end
+
+---If is single game, click "more".
+function action.quest_check_result_single()
+    base.check_image(images.result_single_indicator, status.QUEST_IN_GAME_PRE_WAVE_3, function(loc)
+        counter.count_pass()
+        base.click_delay(loc)
+    end)
+
+    action.check_ap_refill()
+end
+
+---Check if AP needs to be refilled.
+function action.check_ap_refill()
+    return base.check_image(images.ap_refill_indicator, status.FILL_AP_ITEM)
 end
 
 ---Open the AP filling dialog.
 function action.fill_ap()
-    if not base.check_image(images.ap_refill_indicator, status.FILL_AP_ITEM) then
+    if not action.check_ap_refill() then
         base.click_delay(coords.refill_quest_ready)
     end
     -- Handle the case where after stamina refill,
@@ -254,17 +310,11 @@ function action.fill_ap()
 end
 
 local function fill_ap_item_swipe_up()
-    if base.check_image(images.ap_refill_ap_potion_lg) then
-        return true  -- Found that the text for AP potion L exists i.e. at the fill item list bottom
-    end
-
-    setDragDropTiming(50, 50)  -- Press & hold for 50 ms; hold for 50 ms before release
-    setDragDropStepCount(30)  -- Moving step count
-    setDragDropStepInterval(10)  -- Step changing interval in ms
-
-    dragDrop(coords.refill_item_swipe_1, coords.refill_item_swipe_2)
-    wait(1.0)  -- Wait for swipe animation recovery
-    return false
+    return base.check_image_swipe_up(
+        images.ap_refill_ap_potion_lg,
+        coords.refill_item_swipe_1,
+        coords.refill_item_swipe_2
+    )
 end
 
 ---Select the item to use for filling AP.

@@ -69,4 +69,21 @@ function base.check_image(image_obj, new_status, true_func)
     return found
 end
 
+---Check the image existence.
+---
+---If the image is not found, swipe up from a specific point to another specific point.
+function base.check_image_swipe_up(image_obj, swipe_loc_1, swipe_loc_2, new_status, true_func)
+    if base.check_image(image_obj, new_status, true_func) then
+        return true  -- Desired image found
+    end
+
+    setDragDropTiming(50, 50)  -- Press & hold for 50 ms; hold for 50 ms before release
+    setDragDropStepCount(30)  -- Moving step count
+    setDragDropStepInterval(10)  -- Step changing interval in ms
+
+    dragDrop(swipe_loc_1, swipe_loc_2)
+    wait(configs.default_drag_drop_delay)  -- Wait for animation to recover
+    return false
+end
+
 return base

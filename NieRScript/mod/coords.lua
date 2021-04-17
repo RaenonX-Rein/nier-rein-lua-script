@@ -27,6 +27,9 @@ coords.quest_select_event_list_swipe_1 = Location(2092, 1090)  -- Starting point
 coords.quest_select_event_list_swipe_2 = Location(2092, 360)  -- Ending point of the swipe on the event menu
 coords.quest_select_event_vh_10 = Location(2114, 1100)  -- Quest 10 button location
 coords.quest_select_event_challenge = Location(2133, 1107)  -- Bottom of the list of the challenge quests
+-- Memory
+coords.quest_select_memory_10_swipe_1 = Location(2092, 1126)  -- Starting point of the swipe on the memory menu
+coords.quest_select_memory_10_swipe_2 = Location(2092, 430)  -- Ending point of the swipe on the memory menu
 -- Others
 coords.quest_select_week_rot_exp = Location(2077, 793)  -- Weekly rotating sub-quest (Expert)
 coords.quest_select_week_rot_mst = Location(2077, 1089)  -- Weekly rotating sub-quest (Master)
@@ -35,16 +38,19 @@ coords.quest_select_week_rot_mst = Location(2077, 1089)  -- Weekly rotating sub-
 coords.quest_select_wrong_pod = Location(1918, 1215)  -- Click the cancel button if accidentally goes into pod page
 --endregion
 
+--region In Game
+coords.in_game_target_sergeant = Location(116, 387)  -- Click to target the in_game_target_sergeant
+--endregion
+
 --region Quest Control
 coords.quest_start_btn = Location(1757, 1281)  -- Quest start button
 coords.quest_abort_btn = Location(1475, 1140)  -- Quest abort button (in menu)
 coords.quest_abort_confirm_btn = Location(1759, 1112)  -- Quest abort confirm button
 coords.quest_menu_btn = Location(2876, 47)  -- In-game menu button
 
-coords.quest_result_loop_close = Location(1485, 1279)  -- Close the loop result dialog
-coords.quest_result_single_close = Location(2367, 1354)  -- Close the single result dialog
-
-coords.quest_result_single_continue = Location(1803, 1312)  -- Continue (skip the wait)
+coords.quest_result_loop_continue = Location(1803, 1312)  -- Continue the loop (skip the wait)
+coords.quest_result_loop_result_close = Location(1485, 1279)  -- Close the loop result dialog
+coords.quest_result_loop_single_close = Location(2367, 1354)  -- Close the single loop result page
 --endregion
 
 --region AP Refill

@@ -32,6 +32,11 @@ images.quest_event_vh_quest_10_text = {
     region = Region(1843, 1021, 45, 64);
 }
 
+images.quest_mem_10_text = {
+    path = "mem-10f-txt.png";
+    region = Region(1728, 322, 74, 921);
+}
+
 images.quest_wrong_indicator_pod = {
     path = "cancel-txt.png";
     region = Region(1794, 1184, 58, 64);
@@ -67,6 +72,16 @@ images.in_game_menu_back_btn = {
     region = Region(1424, 1250, 66, 62);
 }
 
+images.in_game_is_not_auto = {
+    path = "not-auto-txt.png";
+    region = Region(2627, 39, 45, 33);
+}
+
+images.in_game_is_auto = {
+    path = "auto-txt.png";
+    region = Region(2625, 39, 47, 34);
+}
+
 images.in_game_wave_3 = {
     path = "wave-3.png";
     region = Region(2845, 127, 41, 51);
@@ -82,9 +97,9 @@ images.in_game_drop_ssr_1 = {
     region = Region(1990, 341, 33, 53);
 }
 
-images.in_game_drop_1 = {
-    path = "1-drop-txt.png";
-    region = Region(1986, 342, 43, 53);
+images.in_game_target_sergeant = {
+    path = "target.png";
+    region = Region(90, 385, 55, 46);
 }
 
 images.in_game_abort_confirm_txt = {
@@ -102,9 +117,14 @@ images.result_loop_indicator = {
     region = Region(1427, 1250, 60, 60);
 }
 
-images.result_single_indicator = {
+images.result_loop_single_indicator = {
     path = "end-txt.png";
     region = Region(2310, 1321, 63, 61);
+}
+
+images.result_single_indicator = {
+    path = "more-txt.png";
+    region = Region(1713, 1321, 53, 61);
 }
 
 images.ap_refill_indicator = {

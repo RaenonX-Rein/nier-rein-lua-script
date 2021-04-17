@@ -20,11 +20,11 @@ while true do
         action.quest_close_menu()
         action.quest_check_single_loop_complete()
         action.quest_wait_result_loop()
-    elseif current_status == status.QUEST_IN_GAME_SSR_PRE_WAVE_3 then
+    elseif current_status == status.QUEST_IN_GAME_PRE_WAVE_3 then
         action.quest_close_menu()
         action.quest_check_into_wave_3()
-    elseif current_status == status.QUEST_IN_GAME_SSR_AT_WAVE_3 then
-        action.quest_check_ssr_drop()
+    elseif current_status == status.QUEST_IN_GAME_AT_WAVE_3 then
+        action.quest_handle_at_wave_3()
     elseif current_status == status.QUEST_IN_GAME_SSR_DROPPED then
         action.quest_check_complete_ssr_dropped()
     elseif current_status == status.QUEST_IN_GAME_ABORT_CONFIRM then
@@ -33,8 +33,8 @@ while true do
         action.quest_wait_in_game_loop()
     elseif current_status == status.QUEST_RESULT_LOOP then
         action.quest_check_result_loop()
-    elseif current_status == status.QUEST_RESULT_SINGLE then
-        action.quest_check_result_single()
+    elseif current_status == status.QUEST_RESULT_LOOP_SINGLE then
+        action.quest_check_result_loop_single()
     elseif current_status == status.QUEST_READY_INSUFFICIENT then
         action.fill_ap()
     elseif current_status == status.FILL_AP_ITEM then
@@ -43,6 +43,7 @@ while true do
         action.fill_ap_confirm()
     elseif current_status == status.FILL_AP_FILLED then
         action.fill_check_filled()
+        action.quest_start_quest()
     elseif current_status == status.UNKNOWN then
         action.quest_select_quest()  -- Detect quest menu
         action.quest_start_quest(false)  -- Detect in-game or insufficient AP

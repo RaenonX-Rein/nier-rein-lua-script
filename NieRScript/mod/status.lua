@@ -12,15 +12,15 @@ status.QUEST_SELECT = "Quest / Select"
 status.QUEST_READY = "Quest / Ready"
 status.QUEST_READY_INSUFFICIENT = "Quest / Ready (Insufficient)"
 
-status.QUEST_IN_GAME_SSR_PRE_WAVE_3 = "Quest / In-Game SSR (Pre-wave 3)"
-status.QUEST_IN_GAME_SSR_AT_WAVE_3 = "Quest / In-Game SSR (Wave 3)"
+status.QUEST_IN_GAME_PRE_WAVE_3 = "Quest / In-Game (Pre-wave 3)"
+status.QUEST_IN_GAME_AT_WAVE_3 = "Quest / In-Game (Wave 3)"
 status.QUEST_IN_GAME_SSR_DROPPED = "Quest / In-Game SSR (Dropped)"
 status.QUEST_IN_GAME_ABORT_CONFIRM = "Quest / In-Game SSR (Abort)"
 status.QUEST_IN_GAME_LOOP = "Quest / In-Game (Loop)"
 status.QUEST_COMPLETE = "Quest / Complete"
 
 status.QUEST_RESULT_LOOP = "Quest / Result (Loop)"
-status.QUEST_RESULT_SINGLE = "Quest / Result (Single)"
+status.QUEST_RESULT_LOOP_SINGLE = "Quest / Result (Loop / Single)"
 
 status.FILL_AP_ITEM = "Fill / Item"
 status.FILL_AP_CONFIRM = "Fill / Confirm"
@@ -40,8 +40,8 @@ function status.get_previous()
 end
 
 function status.initial_in_game()
-    if configs.pass_only_ssr_drop then
-        return status.QUEST_IN_GAME_SSR_PRE_WAVE_3
+    if configs.get_not_using_battery_save() then
+        return status.QUEST_IN_GAME_PRE_WAVE_3
     end
 
     return status.QUEST_IN_GAME_LOOP
