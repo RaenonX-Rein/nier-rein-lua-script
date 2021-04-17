@@ -1,0 +1,2 @@
+count_pass=0
+count_fail=0

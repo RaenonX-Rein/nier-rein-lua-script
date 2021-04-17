@@ -64,12 +64,15 @@ local function show_quest_config_dialog()
     newRow()
     addTextView("Play count: ")
     addEditNumber("config_total_games", 100)
+    newRow()
+    addCheckBox("config_reset_counter", "Reset Counter", true)
     dialogShowFullScreen("Config")
 end
 
 local function load_config_data()
     configs.quest_select = configs.quests[config_selected_quest_idx]
     configs.total_games = config_total_games
+    configs.reset_counter = config_reset_counter
 end
 --endregion
 

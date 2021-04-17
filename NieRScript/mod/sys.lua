@@ -36,6 +36,7 @@ end
 
 function system.check_games()
     if counter.get_count_pass() >= configs.total_games then
+        counter.reset()
         system.terminate(string.format("Target games (%d) reached.", counter.get_count_pass()))
     end
 end
