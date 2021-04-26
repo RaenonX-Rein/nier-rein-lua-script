@@ -225,6 +225,11 @@ function action.quest_sergeant_10_wave_3()
         base.click_delay(coords.in_game_target_sergeant)
     end
 
+    -- Count as fail if back to the menu
+    if base.check_image(images.friend_icon, status.QUEST_SELECT) then
+        counter.count_fail()
+    end
+
     action.quest_check_result_single()
 end
 

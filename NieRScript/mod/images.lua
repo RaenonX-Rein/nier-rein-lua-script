@@ -59,7 +59,7 @@ images.unable_to_start_auto = {
 
 images.in_game_loop_icon = {
     path = "in-game-loop.png";
-    region = Region(2508, 47, 40, 39);
+    region = Region(2218, 14, 44, 44);
 }
 
 images.in_game_2x_icon = {
