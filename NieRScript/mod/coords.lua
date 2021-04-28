@@ -50,7 +50,7 @@ coords.quest_menu_btn = Location(2876, 47)  -- In-game menu button
 
 coords.quest_result_loop_continue = Location(1803, 1312)  -- Continue the loop (skip the wait)
 coords.quest_result_loop_result_close = Location(1485, 1279)  -- Close the loop result dialog
-coords.quest_result_loop_single_close = Location(2367, 1354)  -- Close the single loop result page
+coords.quest_result_loop_start_more = Location(2362, 1357)  -- Start a new loop
 --endregion
 
 --region AP Refill

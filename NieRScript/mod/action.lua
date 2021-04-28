@@ -268,25 +268,24 @@ end
 
 ---Update the status to QUEST_RESULT_LOOP if the looped result dialog popped up.
 function action.quest_wait_result_loop()
-    base.check_image(images.result_loop_indicator, status.QUEST_RESULT_LOOP)
+    base.check_image(images.result_loop_indicator, status.QUEST_RESULT_LOOP_DIALOG)
 end
 
 ---Close the loop result dialog.
-function action.quest_check_result_loop()
+function action.quest_check_loop_result_dialog()
     if counter.count_pass() and configs.log_drop then
         wait(5)  -- 5 secs wait for the animation to show the rewards for capturing
         logger.screenshot_message_file_suffix("Drop in a loop", "drop")
     end
-    if not base.check_image(images.result_loop_single_indicator, status.QUEST_RESULT_LOOP_SINGLE) then
+    -- Click to close the loop result dialog until the indicator is found
+    if not base.check_image(images.result_loop_end_indicator, status.QUEST_RESULT_LOOP) then
         base.click_delay(coords.quest_result_loop_result_close)
     end
 end
 
----If the game loop is single, proceed going back to the quest select screen.
-function action.quest_check_result_loop_single()
-    if not base.check_image(images.friend_icon, status.QUEST_SELECT) then
-        base.click_delay(coords.quest_result_loop_single_close)
-    end
+--Continue the loop.
+function action.quest_check_loop_result()
+    base.click_delay(coords.quest_result_loop_start_more)
 end
 
 ---If is single game, click "more".

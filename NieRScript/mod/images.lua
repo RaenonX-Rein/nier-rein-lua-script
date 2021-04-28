@@ -117,9 +117,9 @@ images.result_loop_indicator = {
     region = Region(1427, 1250, 60, 60);
 }
 
-images.result_loop_single_indicator = {
-    path = "end-txt.png";
-    region = Region(2310, 1321, 63, 61);
+images.result_loop_end_indicator = {
+    path = "more-txt.png";
+    region = Region(2271, 1322, 52, 62);
 }
 
 images.result_single_indicator = {

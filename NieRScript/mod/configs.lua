@@ -4,7 +4,6 @@ local configs = {}
 configs.debug = true
 configs.log_status = false
 configs.log_random_click = false
-configs.log_drop = true
 
 configs.min_similarity = 0.85
 --endregion
@@ -15,9 +14,10 @@ configs.toast_cd_sec = 5
 --endregion
 
 --region Game
-configs.fill_item = "AP/L"
--- Gems
--- AP/L
+configs.fill_items = {
+    "Gems",
+    "AP/L",
+}
 
 configs.quests = {
     "--Row--",
@@ -57,31 +57,53 @@ configs.random_click_offset = 5
 --endregion
 
 --region Functions
-local function show_quest_config_dialog()
-    dialogInit()
-
-    addTextView("Quest to play")
-    newRow()
-    addRelativeRadioGroup("config_selected_quest_idx", 1, 4)
-    for idx, quest in ipairs(configs.quests) do
+local function add_radio_buttons(tbl)
+    for idx, quest in ipairs(tbl) do
         if quest == "--Row--" then
             newRow()
         else
             addRadioButton(quest, idx)
         end
     end
+end
+
+local function show_quest_config_dialog()
+    dialogInit()
+
+    addTextView("Quest to play")
+
+    -- Select Quest
+    newRow()
+    addRelativeRadioGroup("config_selected_quest_idx", 1, 4)
+    add_radio_buttons(configs.quests)
+
+    -- Play Count
     newRow()
     addTextView("Play count: ")
     addEditNumber("config_total_games", 100)
+
+    -- Fill item
+    newRow()
+    addRelativeRadioGroup("fill_item_idx", 1, 2)
+    add_radio_buttons(configs.fill_items)
+
+    -- Reset counter
     newRow()
     addCheckBox("config_reset_counter", "Reset Counter", true)
+
+    -- Log Drop
+    newRow()
+    addCheckBox("config_log_drop", "Log Drop", true)
+
     dialogShowFullScreen("Config")
 end
 
 local function load_config_data()
     configs.quest_select = configs.quests[config_selected_quest_idx]
+    configs.fill_item = configs.fill_items[fill_item_idx]
     configs.total_games = config_total_games
     configs.reset_counter = config_reset_counter
+    configs.log_drop = config_log_drop
 end
 --endregion
 

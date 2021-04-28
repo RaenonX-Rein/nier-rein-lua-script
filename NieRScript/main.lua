@@ -31,8 +31,11 @@ while true do
         action.quest_confirm_abort()
     elseif current_status == status.QUEST_COMPLETE then
         action.quest_wait_in_game_loop()
+    elseif current_status == status.QUEST_RESULT_LOOP_DIALOG then
+        action.quest_check_loop_result_dialog()
     elseif current_status == status.QUEST_RESULT_LOOP then
-        action.quest_check_result_loop()
+        action.quest_check_loop_result()
+        action.quest_start_quest(false)
     elseif current_status == status.QUEST_RESULT_LOOP_SINGLE then
         action.quest_check_result_loop_single()
     elseif current_status == status.QUEST_READY_INSUFFICIENT then

@@ -20,7 +20,7 @@ status.QUEST_IN_GAME_LOOP = "Quest / In-Game (Loop)"
 status.QUEST_COMPLETE = "Quest / Complete"
 
 status.QUEST_RESULT_LOOP = "Quest / Result (Loop)"
-status.QUEST_RESULT_LOOP_SINGLE = "Quest / Result (Loop / Single)"
+status.QUEST_RESULT_LOOP_DIALOG = "Quest / Result (Loop / Dialog)"
 
 status.FILL_AP_ITEM = "Fill / Item"
 status.FILL_AP_CONFIRM = "Fill / Confirm"
