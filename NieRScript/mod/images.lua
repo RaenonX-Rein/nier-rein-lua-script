@@ -124,7 +124,7 @@ images.result_loop_end_indicator = {
 
 images.result_single_indicator = {
     path = "more-txt.png";
-    region = Region(1713, 1321, 53, 61);
+    region = Region(2269, 1323, 54, 55);
 }
 
 images.ap_refill_indicator = {

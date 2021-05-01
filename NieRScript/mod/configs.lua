@@ -70,9 +70,8 @@ end
 local function show_quest_config_dialog()
     dialogInit()
 
-    addTextView("Quest to play")
-
     -- Select Quest
+    addTextView("Quest to play")
     newRow()
     addRelativeRadioGroup("config_selected_quest_idx", 1, 4)
     add_radio_buttons(configs.quests)
@@ -84,7 +83,7 @@ local function show_quest_config_dialog()
 
     -- Fill item
     newRow()
-    addRelativeRadioGroup("fill_item_idx", 1, 2)
+    addRelativeRadioGroup("config_fill_item_idx", 1, 2)
     add_radio_buttons(configs.fill_items)
 
     -- Reset counter
@@ -100,7 +99,7 @@ end
 
 local function load_config_data()
     configs.quest_select = configs.quests[config_selected_quest_idx]
-    configs.fill_item = configs.fill_items[fill_item_idx]
+    configs.fill_item = configs.fill_items[config_fill_item_idx]
     configs.total_games = config_total_games
     configs.reset_counter = config_reset_counter
     configs.log_drop = config_log_drop
