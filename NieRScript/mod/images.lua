@@ -32,6 +32,11 @@ images.quest_event_vh_quest_10_text = {
     region = Region(1843, 1021, 45, 64);
 }
 
+images.quest_mem_9_text = {
+    path = "9-txt.png";
+    region = Region(1637, 812, 53, 57);
+}
+
 images.quest_mem_10_text = {
     path = "mem-10f-txt.png";
     region = Region(1728, 322, 74, 921);

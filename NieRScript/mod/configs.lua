@@ -46,6 +46,7 @@ configs.quests = {
     "Event/CHL",
     "--Row--",
     "Memory/Sergeant10",
+    "Memory/Witch9",
 }
 --endregion
 
@@ -121,6 +122,8 @@ function configs.get_status_file_name()
         return "stats-mst"
     elseif q == "Memory/Sergeant10" then
         return "stats-mem10"
+    elseif q == "Memory/Witch9" then
+        return "stats-mem9"
     end
 
     return "stats"

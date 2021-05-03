@@ -18,11 +18,23 @@ local function quest_dark_mem_swipe_up()
     )
 end
 
+local function quest_select_memory_9()
+    return base.check_image_swipe_up(
+        images.quest_mem_9_text,
+        coords.quest_select_memory_swipe_1,
+        coords.quest_select_memory_swipe_2,
+        nil,
+        function(loc)
+            base.click_delay(loc)
+        end
+    )
+end
+
 local function quest_select_memory_10()
     return base.check_image_swipe_up(
         images.quest_mem_10_text,
-        coords.quest_select_memory_10_swipe_1,
-        coords.quest_select_memory_10_swipe_2,
+        coords.quest_select_memory_swipe_1,
+        coords.quest_select_memory_swipe_2,
         nil,
         function(loc)
             base.click_delay(loc)
@@ -127,6 +139,8 @@ function action.quest_select_quest()
         base.click_delay(coords.quest_select_event_challenge)
     elseif quest_name == "Memory/Sergeant10" then
         quest_select_memory_10()
+    elseif quest_name == "Memory/Witch9" then
+        quest_select_memory_9()
     else
         sys.terminate(string.format("Unknown quest to select: %s", quest_name))
     end
@@ -167,7 +181,7 @@ function action.quest_check_into_wave_3()
 
     local quest_name = configs.quest_select
 
-    if quest_name == "Memory/Sergeant10" then
+    if quest_name == "Memory/Sergeant10" or quest_name == "Memory/Witch9" then
         -- Click AUTO to disable if enabled
         base.check_image(images.in_game_is_auto, nil, function(loc)
             base.click_delay(loc)
