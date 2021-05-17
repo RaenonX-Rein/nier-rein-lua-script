@@ -361,6 +361,8 @@ function action.fill_ap_confirm()
         base.click_delay(coords.refill_confirm)
     end
 
+    -- Hotfix: somehow after fill, the quest dialog disappears occasionally
+    action.quest_select_quest()
     action.quest_start_quest(true, false)
 end
 
