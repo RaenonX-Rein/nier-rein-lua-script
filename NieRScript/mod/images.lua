@@ -149,7 +149,60 @@ images.ap_refill_confirm_indicator = {
 
 images.ap_refill_refilled_indicator = {
     path = "close-txt.png";
-    region = Region(1402, 1080, 64, 63)
+    region = Region(1402, 1080, 64, 63);
+}
+
+images.arena_open_menu_text = {
+    path = "arena-battle.png";
+    region = Region(2289, 1061, 61, 67);
+}
+
+images.arena_start_battle_text = {
+    path = "arena-start.png";
+    region = Region(1704, 1249, 63, 64);
+}
+
+images.arena_in_battle_indicator = {
+    path = "in-game-2x.png";
+    region = Region(2420, 20, 46, 54);
+}
+
+images.arena_target_1 = {
+    -- NOT a typo: target-2 means the 2nd type of image for target indicator
+    path = "target-2.png";
+    region = Region(131, 195, 10, 8);
+}
+
+images.arena_target_2 = {
+    -- target-2 means the 2nd type of image for target indicator
+    path = "target-2.png";
+    region = Region(129, 405, 13, 10);
+}
+
+images.arena_target_3 = {
+    -- NOT a typo: target-2 means the 2nd type of image for target indicator
+    path = "target-2.png";
+    region = Region(129, 617, 13, 9);
+}
+
+images.arena_battle_end = {
+    path = "end-txt.png";
+    region = Region(2107, 1065, 66, 57);
+}
+
+images.arena_bp_refill_txt = {
+    path = "ap-refill-txt.png";
+    region = Region(1453, 113, 90, 82);
+}
+
+images.arena_bp_fill_confirm_indicator = {
+    path = "confirm-txt.png";
+    region = Region(1701, 1248, 66, 63);
+}
+
+images.arena_bp_fill_complete_indicator = {
+    path = "close-txt.png";
+    region = Region(1399, 1083, 67, 60);
 }
 
 -- Correct all regions before use

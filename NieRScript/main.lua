@@ -1,4 +1,5 @@
 --region Imports
+action_arena = require(scriptPath() .. "mod/action_arena")
 action_quest = require(scriptPath() .. "mod/action_quest")
 configs = require(scriptPath() .. "mod/configs")
 status = require(scriptPath() .. "mod/status")
@@ -39,7 +40,21 @@ while true do
     elseif current_status == status.QUEST_RESULT_LOOP_SINGLE then
         action_quest.quest_check_result_loop_single()
     elseif current_status == status.QUEST_READY_INSUFFICIENT then
-        action.fill_ap()
+        action_quest.fill_ap()
+    elseif current_status == status.ARENA_MAIN then
+        action_arena.arena_open_menu()
+    elseif current_status == status.ARENA_SELECT then
+        action_arena.arena_start_battle()
+    elseif current_status == status.ARENA_BP_ITEM then
+        action_arena.arena_bp_fill_item()
+    elseif current_status == status.ARENA_BP_CONFIRM_GEM then
+        action_arena.arena_bp_fill_confirm_gems()
+    elseif current_status == status.ARENA_BP_COMPLETE then
+        action_arena.arena_bp_fill_dismiss_dialog()
+    elseif current_status == status.ARENA_IN_BATTLE then
+        action_arena.arena_in_battle()
+    elseif current_status == status.ARENA_BATTLE_END then
+        action_arena.arena_battle_end()
     elseif current_status == status.FILL_AP_ITEM then
         action_quest.fill_ap_select_item()
     elseif current_status == status.FILL_AP_CONFIRM then
@@ -48,8 +63,14 @@ while true do
         action_quest.fill_check_filled()
         action_quest.quest_start_quest()
     elseif current_status == status.UNKNOWN then
-        action_quest.quest_select_quest()  -- Detect quest menu
-        action_quest.quest_start_quest(false)  -- Detect in-game or insufficient AP
+        if configs.quest_select == "Arena" then
+            action_arena.arena_open_menu()  -- Detect arena main screen
+            action_arena.arena_start_battle()  -- Detect arena start battle
+            action_arena.arena_in_battle()  -- Detect arena in-game (just ends)
+        else
+            action_quest.quest_select_quest()  -- Detect quest menu
+            action_quest.quest_start_quest(false)  -- Detect in-game or insufficient AP
+        end
     else
         sys.terminate(string.format("Unhandled state: %s\nScript terminated.", current_status))
     end

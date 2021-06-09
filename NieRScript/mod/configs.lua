@@ -47,6 +47,8 @@ configs.quests = {
     "--Row--",
     "Memory/Sergeant10",
     "Memory/Witch9",
+    "--Row--",
+    "Arena",
 }
 --endregion
 
@@ -82,6 +84,11 @@ local function show_quest_config_dialog()
     addTextView("Play count: ")
     addEditNumber("config_total_games", 100)
 
+    -- Play Count
+    newRow()
+    addTextView("Arena Target #: ")
+    addEditNumber("config_arena_target_idx", 1)
+
     -- Fill item
     newRow()
     addRelativeRadioGroup("config_fill_item_idx", 1, 2)
@@ -104,6 +111,7 @@ local function load_config_data()
     configs.total_games = config_total_games
     configs.reset_counter = config_reset_counter
     configs.log_drop = config_log_drop
+    configs.arena_target_idx = config_arena_target_idx
 end
 --endregion
 
