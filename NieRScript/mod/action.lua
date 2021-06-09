@@ -278,6 +278,7 @@ end
 function action.quest_wait_in_game_loop()
     counter.count_pass()
     base.check_image(images.in_game_loop_icon, status.initial_in_game())
+    action.check_ap_refill()
 end
 
 ---Update the status to QUEST_RESULT_LOOP if the looped result dialog popped up.
