@@ -205,6 +205,15 @@ images.arena_bp_fill_complete_indicator = {
     region = Region(1399, 1083, 67, 60);
 }
 
+local arena_name_1 = Region(610, 425, 402, 54);
+local arena_name_2 = Region(610, 691, 402, 54);
+local arena_name_3 = Region(610, 961, 402, 54);
+
+images.arena_avoid_1 = {
+    path = "avoid-1.png";
+    region = arena_name_1;
+}
+
 -- Correct all regions before use
 for name, image in pairs(images) do
     images[name].region = utils.correct_region(image.region)

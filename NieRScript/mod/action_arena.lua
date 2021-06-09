@@ -43,6 +43,10 @@ function action_arena.arena_start_battle(check_refill)
     -- - Specify the current state explicitly for state reassignment
     --   by the call from `action_arena.arena_bp_fill_dismiss_dialog`
     base.check_image(images.arena_start_battle_text, status.ARENA_SELECT, function(loc)
+        -- Check players to avoid
+        if base.check_image(images.arena_avoid_1, nil) then
+            base.click_delay(coords.arena_select_2)
+        end
         base.click_delay(loc)
     end)
     -- Check in battle

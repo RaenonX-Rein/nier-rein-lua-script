@@ -70,6 +70,7 @@ coords.arena_p3_s2 = Location(2781, 1256)  -- 3rd player S2
 coords.arena_target_1 = Location(113, 172)  -- Target the 1st enemy
 coords.arena_target_2 = Location(113, 383)  -- Target the 2nd enemy
 coords.arena_target_3 = Location(113, 595)  -- Target the 3rd enemy
+coords.arena_select_2 = Location(728, 706)  -- Select 2nd arena player
 --endregion
 
 -- Correct all locations before use
