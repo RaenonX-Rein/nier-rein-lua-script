@@ -95,6 +95,9 @@ end
 --- Handle actions when the battle ends.
 function action_arena.arena_battle_end()
     counter.count_pass()
+    base.check_image(images.arena_battle_end, nil, function(loc)
+        base.click_delay(loc)
+    end)
     action_arena.arena_open_menu()
 end
 
