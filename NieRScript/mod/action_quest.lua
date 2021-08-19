@@ -194,7 +194,7 @@ function action_quest.quest_handle_at_wave_3()
     local quest_name = configs.quest_select
 
     if quest_name == "DarkMem/Std" or quest_name == "DarkMem/Exp" or quest_name == "DarkMem/Mst" then
-        action_quest.quest_check_ssr_drop()
+        status.update(status.QUEST_ATTEMPT_OPEN_MENU)
     elseif quest_name == "Memory/Sergeant10" then
         action_quest.quest_sergeant_10_wave_3()
     else
@@ -202,21 +202,23 @@ function action_quest.quest_handle_at_wave_3()
     end
 end
 
+---Actions to click on the menu button for the next action
+function action_quest.quest_click_menu()
+    base.click_delay(coords.quest_menu_btn)
+
+    local quest_name = configs.quest_select
+
+    if quest_name == "DarkMem/Std" then
+        -- Change status if menu back button is found (menu opened)
+        base.check_image(images.in_game_menu_back_btn, status.QUEST_CHECK_SSR_DROP)
+    end
+end
+
 ---Check the current SSR drop status and change to corresponding status.
 function action_quest.quest_check_ssr_drop()
-    -- If quest abort confirm dialog is found, change the status and terminate the action
-    if base.check_image(images.in_game_abort_confirm_txt, status.QUEST_IN_GAME_ABORT_CONFIRM) then
-        return
-    end
-
-    -- Click the menu button
-    if not action_quest.quest_close_menu(false) then
-        base.click_delay(coords.quest_menu_btn)
-    end
-
     -- Click abort button if no SSR drop
     if base.check_image(images.in_game_drop_ssr_0) then
-        base.click_delay(coords.quest_abort_btn)
+        status.update(status.QUEST_IN_GAME_ABORT)
         return
     end
 
@@ -225,6 +227,14 @@ function action_quest.quest_check_ssr_drop()
         action_quest.quest_close_menu()
         return
     end
+end
+
+---Actions to abort the current run.
+function action_quest.quest_abort_run()
+    base.click_delay(coords.quest_abort_btn)
+
+    -- If quest abort confirm dialog is found, change the status
+    base.check_image(images.in_game_abort_confirm_txt, status.QUEST_IN_GAME_ABORT_CONFIRM)
 end
 
 ---Actions to perform during wave 3 of sergeant memory 10.

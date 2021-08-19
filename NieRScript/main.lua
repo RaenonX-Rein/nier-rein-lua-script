@@ -28,6 +28,8 @@ while true do
         action_quest.quest_handle_at_wave_3()
     elseif current_status == status.QUEST_IN_GAME_SSR_DROPPED then
         action_quest.quest_check_complete_ssr_dropped()
+    elseif current_status == status.QUEST_IN_GAME_ABORT then
+        action_quest.quest_abort_run()
     elseif current_status == status.QUEST_IN_GAME_ABORT_CONFIRM then
         action_quest.quest_confirm_abort()
     elseif current_status == status.QUEST_COMPLETE then
@@ -41,6 +43,10 @@ while true do
         action_quest.quest_check_result_loop_single()
     elseif current_status == status.QUEST_READY_INSUFFICIENT then
         action_quest.fill_ap()
+    elseif current_status == status.QUEST_ATTEMPT_OPEN_MENU then
+        action_quest.quest_click_menu()
+    elseif current_status == status.QUEST_CHECK_SSR_DROP then
+        action_quest.quest_check_ssr_drop()
     elseif current_status == status.ARENA_MAIN then
         action_arena.arena_open_menu()
     elseif current_status == status.ARENA_SELECT then
