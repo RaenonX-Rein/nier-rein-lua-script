@@ -162,6 +162,11 @@ images.arena_start_battle_text = {
     region = Region(1704, 1249, 63, 64);
 }
 
+images.arena_pre_battle_wave = {
+    path = "arena-wave.png";
+    region = Region(2723, 130, 52, 46);
+}
+
 images.arena_in_battle_indicator = {
     path = "in-game-2x.png";
     region = Region(2420, 20, 46, 54);
@@ -170,19 +175,34 @@ images.arena_in_battle_indicator = {
 images.arena_target_1 = {
     -- NOT a typo: target-2 means the 2nd type of image for target indicator
     path = "target-2.png";
-    region = Region(131, 195, 10, 8);
+    region = Region(125, 189, 21, 18);
 }
 
 images.arena_target_2 = {
     -- target-2 means the 2nd type of image for target indicator
     path = "target-2.png";
-    region = Region(129, 405, 13, 10);
+    region = Region(125, 401, 21, 18);
 }
 
 images.arena_target_3 = {
     -- NOT a typo: target-2 means the 2nd type of image for target indicator
     path = "target-2.png";
-    region = Region(129, 617, 13, 9);
+    region = Region(125, 614, 21, 18);
+}
+
+images.arena_dead_1 = {
+    path = "arena-dead.png";
+    region = Region(227, 185, 33, 24);
+}
+
+images.arena_dead_2 = {
+    path = "arena-dead.png";
+    region = Region(227, 397, 27, 33);
+}
+
+images.arena_dead_3 = {
+    path = "arena-dead.png";
+    region = Region(227, 607, 27, 33);
 }
 
 images.arena_battle_end = {
@@ -205,9 +225,9 @@ images.arena_bp_fill_complete_indicator = {
     region = Region(1399, 1083, 67, 60);
 }
 
-local arena_name_1 = Region(610, 425, 402, 54);
-local arena_name_2 = Region(610, 691, 402, 54);
-local arena_name_3 = Region(610, 961, 402, 54);
+local arena_name_1 = Region(615, 430, 40, 41);
+local arena_name_2 = Region(610, 691, 402, 64);
+local arena_name_3 = Region(610, 961, 402, 64);
 
 images.arena_avoid_1 = {
     path = "avoid-1.png";

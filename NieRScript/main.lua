@@ -51,6 +51,8 @@ while true do
         action_arena.arena_bp_fill_confirm_gems()
     elseif current_status == status.ARENA_BP_COMPLETE then
         action_arena.arena_bp_fill_dismiss_dialog()
+    elseif current_status == status.ARENA_PRE_BATTLE then
+        action_arena.arena_pre_battle()
     elseif current_status == status.ARENA_IN_BATTLE then
         action_arena.arena_in_battle()
     elseif current_status == status.ARENA_BATTLE_END then

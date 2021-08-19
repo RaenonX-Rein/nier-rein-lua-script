@@ -27,6 +27,7 @@ status.ARENA_SELECT = "Arena / Select"
 status.ARENA_BP_ITEM = "Arena / BP Fill"
 status.ARENA_BP_CONFIRM_GEM = "Arena / BP Confirm (Gem)"
 status.ARENA_BP_COMPLETE = "Arena / BP Complete"
+status.ARENA_PRE_BATTLE = "Arena / Pre battle"
 status.ARENA_IN_BATTLE = "Arena / In battle"
 status.ARENA_BATTLE_END = "Arena / End"
 

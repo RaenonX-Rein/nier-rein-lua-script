@@ -84,10 +84,13 @@ local function show_quest_config_dialog()
     addTextView("Play count: ")
     addEditNumber("config_total_games", 100)
 
-    -- Play Count
+    -- Arena target IDX
     newRow()
-    addTextView("Arena Target #: ")
-    addEditNumber("config_arena_target_idx", 1)
+    addTextView("Arena Target # (1): ")
+    addEditNumber("config_arena_target_idx_1", 2)
+    newRow()
+    addTextView("Arena Target # (2): ")
+    addEditNumber("config_arena_target_idx_2", 3)
 
     -- Fill item
     newRow()
@@ -111,13 +114,21 @@ local function load_config_data()
     configs.total_games = config_total_games
     configs.reset_counter = config_reset_counter
     configs.log_drop = config_log_drop
-    configs.arena_target_idx = config_arena_target_idx
+    configs.arena_target_idx_1 = config_arena_target_idx_1
+    configs.arena_target_idx_2 = config_arena_target_idx_2
+end
+
+local function validate_config()
+    if configs.arena_target_idx_1 == configs.arena_target_idx_2 then
+        scriptExit("Arena target IDXs must not be the same.")
+    end
 end
 --endregion
 
 --region Properties
 show_quest_config_dialog()
 load_config_data()
+validate_config()
 
 local q = configs.quest_select
 
