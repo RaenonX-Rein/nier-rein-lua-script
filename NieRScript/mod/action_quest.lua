@@ -276,12 +276,14 @@ function action_quest.quest_check_single_loop_complete()
     end
 end
 
----Check if the quest is completed. (Single run)
+---Check if the quest is completed.
 function action_quest.quest_check_complete_ssr_dropped()
     counter.count_pass()
 
-    -- Terminate the script early
-    sys.terminate("SSR Dropped")
+    -- Check if the quest ends. If so, click on the end button and set state to select
+    base.check_image(images.quest_dark_mem_complete_indicator, status.QUEST_DARK_MEM_SELECT, function(loc)
+        base.click_delay(loc)
+    end)
 end
 
 ---Update the status to the initial in-game status if the screen appears to be playing in auto with loop.
