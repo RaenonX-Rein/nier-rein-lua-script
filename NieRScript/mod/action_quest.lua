@@ -269,11 +269,18 @@ function action_quest.fill_ap_select_item()
 
     if fill_item == "Gems" then
         base.click_delay(coords.refill_by_gem)
-    elseif fill_item == "AP/L" then
+    elseif fill_item:find("^AP") then
         if not fill_ap_item_swipe_up() then
             return
         end
-        base.click_delay(coords.refill_by_pot_lg)
+
+        if fill_item == "AP/S" then
+            base.click_delay(coords.refill_by_pot_sm)
+        elseif fill_item == "AP/M" then
+            base.click_delay(coords.refill_by_pot_md)
+        elseif fill_item == "AP/L" then
+            base.click_delay(coords.refill_by_pot_lg)
+        end
     else
         sys.terminate(string.format("Unknown AP fill item: %s", quest_name))
     end

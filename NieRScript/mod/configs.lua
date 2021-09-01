@@ -16,6 +16,8 @@ configs.toast_cd_sec = 5
 --region Game
 configs.fill_items = {
     "Gems",
+    "AP/S",
+    "AP/M",
     "AP/L",
 }
 
