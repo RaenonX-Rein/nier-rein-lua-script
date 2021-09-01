@@ -30,6 +30,23 @@ coords.quest_select_event_challenge = Location(2133, 1107)  -- Bottom of the lis
 -- Memory
 coords.quest_select_memory_swipe_1 = Location(2092, 1126)  -- Starting point of the swipe on the memory menu
 coords.quest_select_memory_swipe_2 = Location(2092, 430)  -- Ending point of the swipe on the memory menu
+-- Dark Memories
+coords.quest_select_dark_mem = {
+    -- Starts from index 1, and index 1 ~ 6 is top-left to top-right
+    Location(931, 593),
+    Location(1230, 593),
+    Location(1568, 593),
+    Location(1880, 593),
+    Location(2183, 593),
+    Location(2517, 593),
+    Location(931, 1169),
+    Location(1230, 1169),
+    Location(1568, 1169),
+    Location(1880, 1169),
+    Location(2183, 1169),
+    Location(2517, 1169),
+}
+coords.quest_select_dark_mem_back = Location(80, 80)
 -- Others
 coords.quest_select_week_rot_exp = Location(2077, 793)  -- Weekly rotating sub-quest (Expert)
 coords.quest_select_week_rot_mst = Location(2077, 1089)  -- Weekly rotating sub-quest (Master)

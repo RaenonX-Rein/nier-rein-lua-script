@@ -12,6 +12,10 @@ status.QUEST_SELECT = "Quest / Select"
 status.QUEST_READY = "Quest / Ready"
 status.QUEST_READY_INSUFFICIENT = "Quest / Ready (Insufficient)"
 
+status.QUEST_DARK_MEM_LIST = "Quest / Dark Mem List"
+status.QUEST_DARK_MEM_SELECT = "Quest / Dark Mem Select"
+status.QUEST_DARK_MEM_LOCKED = "Quest / Dark Mem Locked"
+
 status.QUEST_IN_GAME_PRE_WAVE_3 = "Quest / In-Game (Pre-wave 3)"
 status.QUEST_IN_GAME_AT_WAVE_3 = "Quest / In-Game (Wave 3)"
 status.QUEST_IN_GAME_SSR_DROPPED = "Quest / In-Game SSR (Dropped)"

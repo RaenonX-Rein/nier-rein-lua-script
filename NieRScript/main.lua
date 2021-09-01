@@ -1,5 +1,6 @@
 --region Imports
 action_arena = require(scriptPath() .. "mod/action_arena")
+action_dark = require(scriptPath() .. "mod/action_dark_mem")
 action_quest = require(scriptPath() .. "mod/action_quest")
 configs = require(scriptPath() .. "mod/configs")
 status = require(scriptPath() .. "mod/status")
@@ -43,6 +44,16 @@ while true do
         action_quest.quest_check_result_loop_single()
     elseif current_status == status.QUEST_READY_INSUFFICIENT then
         action_quest.fill_ap()
+    elseif current_status == status.QUEST_DARK_MEM_LIST then
+        action_dark.select_unit()
+
+    elseif current_status == status.QUEST_DARK_MEM_SELECT then
+        if not action_dark.check_std_locked() then
+            action_quest.quest_select_quest()
+        end
+    elseif current_status == status.QUEST_DARK_MEM_LOCKED then
+        action_dark.back_to_list()
+
     elseif current_status == status.QUEST_ATTEMPT_OPEN_MENU then
         action_quest.quest_click_menu()
     elseif current_status == status.QUEST_CHECK_SSR_DROP then

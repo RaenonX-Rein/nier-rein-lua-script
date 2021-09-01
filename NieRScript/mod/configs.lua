@@ -84,6 +84,11 @@ local function show_quest_config_dialog()
     addTextView("Play count: ")
     addEditNumber("config_total_games", 100)
 
+    -- Play Count
+    newRow()
+    addTextView("Dark Mem Start Index (index-1): ")
+    addEditNumber("config_dark_mem_idx", 1)
+
     -- Arena target IDX
     newRow()
     addTextView("Arena Target # (1): ")
