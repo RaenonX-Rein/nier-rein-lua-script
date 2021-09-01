@@ -7,21 +7,6 @@ images.friend_icon = {
     region = Region(2527, 58, 68, 56);
 }
 
-images.quest_event_vh_difficulty_text = {
-    path = "quest-vh.png";
-    region = Region(2408, 226, 54, 47);
-}
-
-images.quest_event_3_text = {
-    path = "3-txt.png";
-    region = Region(1822, 301, 92, 932);
-}
-
-images.quest_event_9_text = {
-    path = "9-txt.png";
-    region = Region(1822, 301, 92, 932);
-}
-
 images.quest_dark_mem_2_coin_text = {
     path = "coin-txt.png";
     region = Region(1800, 783, 61, 53);
@@ -41,21 +26,6 @@ images.quest_dark_mem_complete_indicator = {
 images.quest_dark_mem_lock_icon = {
     path = "dark-mem-lock.png";
     region = Region(2082, 322, 47, 50);
-}
-
-images.quest_event_vh_quest_10_text = {
-    path = "1-txt.png";
-    region = Region(1843, 1021, 45, 64);
-}
-
-images.quest_mem_9_text = {
-    path = "9-txt.png";
-    region = Region(1637, 812, 53, 57);
-}
-
-images.quest_mem_10_text = {
-    path = "mem-10f-txt.png";
-    region = Region(1728, 322, 74, 921);
 }
 
 images.quest_wrong_indicator_pod = {
@@ -96,11 +66,6 @@ images.in_game_menu_back_btn = {
 images.in_game_is_not_auto = {
     path = "not-auto-txt.png";
     region = Region(2627, 39, 45, 33);
-}
-
-images.in_game_is_auto = {
-    path = "auto-txt.png";
-    region = Region(2625, 39, 47, 34);
 }
 
 images.in_game_wave_3 = {
@@ -242,8 +207,6 @@ images.arena_bp_fill_complete_indicator = {
 }
 
 local arena_name_1 = Region(615, 430, 40, 41);
-local arena_name_2 = Region(610, 691, 402, 64);
-local arena_name_3 = Region(610, 961, 402, 64);
 
 images.arena_avoid_1 = {
     path = "avoid-1.png";

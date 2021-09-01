@@ -13,23 +13,6 @@ coords.quest_select_dark_mem_exp = Location(2090, 637)  -- Expert dark memory
 coords.quest_select_dark_mem_mst = Location(2090, 901)  -- Master dark memory
 coords.quest_select_dark_mem_swipe_1 = Location(2092, 1090)  -- Starting point of the swipe on the dark mem menu
 coords.quest_select_dark_mem_swipe_2 = Location(2092, 340)  -- Ending point of the swipe on the dark mem menu
--- Main quest
-coords.quest_select_main_1 = Location(986, 554)
-coords.quest_select_main_4 = Location(2116, 549)
-coords.quest_select_main_6 = Location(984, 991)
-coords.quest_select_main_7 = Location(1360, 971)
-coords.quest_select_main_8 = Location(1747, 979)
-coords.quest_select_main_9 = Location(2116, 984)
-coords.quest_select_main_10 = Location(2487, 984)
--- Event
-coords.quest_select_event_difficulty = Location(2515, 251)  -- Click for switching the difficulty
-coords.quest_select_event_list_swipe_1 = Location(2092, 1090)  -- Starting point of the swipe on the event menu
-coords.quest_select_event_list_swipe_2 = Location(2092, 360)  -- Ending point of the swipe on the event menu
-coords.quest_select_event_vh_10 = Location(2114, 1100)  -- Quest 10 button location
-coords.quest_select_event_challenge = Location(2133, 1107)  -- Bottom of the list of the challenge quests
--- Memory
-coords.quest_select_memory_swipe_1 = Location(2092, 1126)  -- Starting point of the swipe on the memory menu
-coords.quest_select_memory_swipe_2 = Location(2092, 430)  -- Ending point of the swipe on the memory menu
 -- Dark Memories
 coords.quest_select_dark_mem = {
     -- Starts from index 1, and index 1 ~ 6 is top-left to top-right
@@ -47,9 +30,6 @@ coords.quest_select_dark_mem = {
     Location(2517, 1169),
 }
 coords.quest_select_dark_mem_back = Location(80, 80)
--- Others
-coords.quest_select_week_rot_exp = Location(2077, 793)  -- Weekly rotating sub-quest (Expert)
-coords.quest_select_week_rot_mst = Location(2077, 1089)  -- Weekly rotating sub-quest (Master)
 
 -- Actions
 coords.quest_select_wrong_pod = Location(1918, 1215)  -- Click the cancel button if accidentally goes into pod page

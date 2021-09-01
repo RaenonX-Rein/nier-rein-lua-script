@@ -18,52 +18,6 @@ local function quest_dark_mem_swipe_up()
     )
 end
 
-local function quest_select_memory_9()
-    return base.check_image_swipe_up(
-        images.quest_mem_9_text,
-        coords.quest_select_memory_swipe_1,
-        coords.quest_select_memory_swipe_2,
-        nil,
-        function(loc)
-            base.click_delay(loc)
-        end
-    )
-end
-
-local function quest_select_memory_10()
-    return base.check_image_swipe_up(
-        images.quest_mem_10_text,
-        coords.quest_select_memory_swipe_1,
-        coords.quest_select_memory_swipe_2,
-        nil,
-        function(loc)
-            base.click_delay(loc)
-        end
-    )
-end
-
-local function quest_handle_event_vh(vh_image, vh_coords)
-    if not base.check_image(images.quest_event_vh_difficulty_text) then
-        -- Not very hard difficulty
-        base.click_delay(coords.quest_select_event_difficulty)
-        return
-    end
-
-    if not base.check_image(vh_image) then
-        -- Is very hard difficulty & not found quest 10
-        setDragDropTiming(50, 50)  -- Press & hold for 50 ms; hold for 50 ms before release
-        setDragDropStepCount(30)  -- Moving step count
-        setDragDropStepInterval(10)  -- Step changing interval in ms
-
-        dragDrop(coords.quest_select_event_list_swipe_1, coords.quest_select_event_list_swipe_2)
-        wait(0.5)  -- Wait for swipe animation recovery
-        return
-    end
-
-    -- Found quest and is VH
-    base.click_delay(vh_coords)
-end
-
 ---Select the quest to auto if the current page is in quest selection menu.
 function action_quest.quest_select_quest()
     if base.check_image(images.quest_ready_indicator, status.QUEST_READY) then
@@ -107,40 +61,6 @@ function action_quest.quest_select_quest()
         base.click_delay(coords.quest_select_dark_mem_exp)
     elseif quest_name == "DarkMem/Mst" then
         base.click_delay(coords.quest_select_dark_mem_mst)
-    elseif quest_name == "Main/1" then
-        base.click_delay(coords.quest_select_main_1)
-    elseif quest_name == "Main/4" then
-        base.click_delay(coords.quest_select_main_4)
-    elseif quest_name == "Main/6" then
-        base.click_delay(coords.quest_select_main_6)
-    elseif quest_name == "Main/7" then
-        base.click_delay(coords.quest_select_main_7)
-    elseif quest_name == "Main/8" then
-        base.click_delay(coords.quest_select_main_8)
-    elseif quest_name == "Main/9" then
-        base.click_delay(coords.quest_select_main_9)
-    elseif quest_name == "Main/10" then
-        base.click_delay(coords.quest_select_main_10)
-    elseif quest_name == "WeekRot/Exp" then
-        base.click_delay(coords.quest_select_week_rot_exp)
-    elseif quest_name == "WeekRot/Mst" then
-        base.click_delay(coords.quest_select_week_rot_mst)
-    elseif quest_name == "Event/3" then
-        base.check_image(images.quest_event_3_text, nil, function(loc)
-            base.click_delay(loc)
-        end)
-    elseif quest_name == "Event/9" then
-        base.check_image(images.quest_event_9_text, nil, function(loc)
-            base.click_delay(loc)
-        end)
-    elseif quest_name == "Event/VH-10" then
-        quest_handle_event_vh(images.quest_event_vh_quest_10_text, coords.quest_select_event_vh_10)
-    elseif quest_name == "Event/CHL" then
-        base.click_delay(coords.quest_select_event_challenge)
-    elseif quest_name == "Memory/Sergeant10" then
-        quest_select_memory_10()
-    elseif quest_name == "Memory/Witch9" then
-        quest_select_memory_9()
     else
         sys.terminate(string.format("Unknown quest to select: %s", quest_name))
     end
@@ -178,15 +98,6 @@ end
 function action_quest.quest_check_into_wave_3()
     counter.unlock()
     base.check_image(images.in_game_wave_3, status.QUEST_IN_GAME_AT_WAVE_3)
-
-    local quest_name = configs.quest_select
-
-    if quest_name == "Memory/Sergeant10" or quest_name == "Memory/Witch9" then
-        -- Click AUTO to disable if enabled
-        base.check_image(images.in_game_is_auto, nil, function(loc)
-            base.click_delay(loc)
-        end)
-    end
 end
 
 ---Actions to be performed at wave 3.

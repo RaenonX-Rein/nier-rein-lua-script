@@ -29,25 +29,7 @@ configs.quests = {
     "DarkMem/Exp",
     "DarkMem/Mst",
     "--Row--",
-    "Main/1",
-    "Main/4",
-    "Main/6",
-    "Main/7",
-    "Main/8",
-    "Main/9",
-    "Main/10",
-    "--Row--",
-    "WeekRot/Exp",
-    "WeekRot/Mst",
-    "--Row--",
-    "Event/3",
-    "Event/9",
-    "Event/VH-10",
-    "Event/CHL",
-    "--Row--",
-    "Memory/Sergeant10",
-    "Memory/Witch9",
-    "--Row--",
+    "Auto-10",
     "Arena",
 }
 --endregion
@@ -144,10 +126,6 @@ function configs.get_status_file_name()
         return "stats-exp"
     elseif q == "DarkMem/Mst" then
         return "stats-mst"
-    elseif q == "Memory/Sergeant10" then
-        return "stats-mem10"
-    elseif q == "Memory/Witch9" then
-        return "stats-mem9"
     end
 
     return "stats"
