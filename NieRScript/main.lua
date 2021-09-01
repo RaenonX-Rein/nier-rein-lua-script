@@ -80,10 +80,15 @@ while true do
         action_quest.fill_check_filled()
         action_quest.quest_start_quest()
     elseif current_status == status.UNKNOWN then
-        if configs.quest_select == "Arena" then
+        local quest = configs.quest_select
+
+        if quest == "Arena" then
             action_arena.arena_open_menu()  -- Detect arena main screen
             action_arena.arena_start_battle()  -- Detect arena start battle
             action_arena.arena_in_battle()  -- Detect arena in-game (just ends)
+        elseif quest == "DarkMem/Std" then
+            action_dark.select_unit()
+            action_dark.check_std_locked()
         else
             action_quest.quest_select_quest()  -- Detect quest menu
             action_quest.quest_start_quest(false)  -- Detect in-game or insufficient AP
