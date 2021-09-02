@@ -2,7 +2,6 @@
 base = require(scriptPath() .. "mod/base")
 coords = require(scriptPath() .. "mod/coords")
 configs = require(scriptPath() .. "mod/configs")
-counter = require(scriptPath() .. "mod/counter")
 images = require(scriptPath() .. "mod/images")
 status = require(scriptPath() .. "mod/status")
 sys = require(scriptPath() .. "mod/sys")
@@ -30,12 +29,13 @@ end
 function action_dark.select_unit()
     local unit_loc = coords.quest_select_dark_mem[configs.config_dark_mem_idx]
 
-    if base.check_image(images.quest_dark_mem_list_indicator) then
-        base.click_delay(unit_loc)
-    else
-        status.update(status.QUEST_DARK_MEM_SELECT)
+    if base.check_image(images.quest_dark_mem_unit_indicator, status.QUEST_DARK_MEM_SELECT, function()
         quest_idx_advance_lock = false
+    end) then
+        return
     end
+
+    base.click_delay(unit_loc)
 end
 
 ---Check if the standard quest is locked and return the result.

@@ -12,10 +12,9 @@ images.quest_dark_mem_2_coin_text = {
     region = Region(1800, 783, 61, 53);
 }
 
-images.quest_dark_mem_list_indicator = {
-    -- Using フランリーゼ's boobs
-    path = "dark-mem-list.png";
-    region = Region(1169, 556, 42, 32);
+images.quest_dark_mem_unit_indicator = {
+    path = "dark-mem-unit.png";
+    region = Region(270, 209, 37, 41);
 }
 
 images.quest_dark_mem_complete_indicator = {
