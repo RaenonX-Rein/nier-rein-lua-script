@@ -16,6 +16,7 @@ function advance_dark_mem_idx()
         return
     end
 
+    quest_idx_advance_lock = true
     configs.config_dark_mem_idx = configs.config_dark_mem_idx + 1
     -- Rotate back to 1 if the index goes out of bound
     if configs.config_dark_mem_idx > table.getn(coords.quest_select_dark_mem) then
