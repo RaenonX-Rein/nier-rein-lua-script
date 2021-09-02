@@ -87,8 +87,9 @@ while true do
             action_arena.arena_start_battle()  -- Detect arena start battle
             action_arena.arena_in_battle()  -- Detect arena in-game (just ends)
         elseif quest == "DarkMem/Std" then
-            action_dark.select_unit()
-            action_dark.check_std_locked()
+            action_dark.select_unit()  -- Detect unit selection page
+            action_dark.check_std_locked()  -- Detect quest lock in dark mem page of a unit
+            action_quest.quest_start_quest(false)  -- Detect in-game or insufficient AP
         else
             action_quest.quest_select_quest()  -- Detect quest menu
             action_quest.quest_start_quest(false)  -- Detect in-game or insufficient AP
