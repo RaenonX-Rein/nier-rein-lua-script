@@ -100,6 +100,7 @@ end
 local function load_config_data()
     configs.quest_select = configs.quests[config_selected_quest_idx]
     configs.fill_item = configs.fill_items[config_fill_item_idx]
+    configs.config_dark_mem_idx = config_dark_mem_idx
     configs.total_games = config_total_games
     configs.reset_counter = config_reset_counter
     configs.log_drop = config_log_drop
