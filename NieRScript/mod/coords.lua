@@ -74,7 +74,15 @@ coords.arena_select_2 = Location(728, 706)  -- Select 2nd arena player
 
 -- Correct all locations before use
 for name, location in pairs(coords) do
-    coords[name] = utils.correct_location(location)
+    if name == "quest_select_dark_mem" then
+        for key, coord in pairs(location) do
+            location[tonumber(key)] = utils.correct_location(coord)
+        end
+    else
+        location = utils.correct_location(location)
+    end
+
+    coords[name] = location
 end
 
 return coords
