@@ -5,11 +5,20 @@ configs = require(scriptPath() .. "mod/configs")
 images = require(scriptPath() .. "mod/images")
 status = require(scriptPath() .. "mod/status")
 sys = require(scriptPath() .. "mod/sys")
+utils = require(scriptPath() .. "mod/utils")
 --endregion
 
 local action_dark = {}
 
 local quest_idx_advance_lock = false
+
+local preset_count = table.getn(configs.config_dark_mem_idx)
+
+local preset_idx_current = 1  -- -1 for not in use
+
+local preset_idx_used = utils.init_table(false, preset_count)
+
+local current_unit_idx = configs.config_dark_mem_idx[1]
 
 function advance_dark_mem_idx()
     if quest_idx_advance_lock then
@@ -17,10 +26,23 @@ function advance_dark_mem_idx()
     end
 
     quest_idx_advance_lock = true
-    configs.config_dark_mem_idx = configs.config_dark_mem_idx + 1
+
+    -- Set index according to preset order first
+    local preset_idx = 1
+    repeat
+        if not preset_idx_used[preset_idx] then
+            preset_idx_current = preset_idx
+            current_unit_idx = configs.config_dark_mem_idx[preset_idx]
+            return
+        end
+        preset_idx = preset_idx + 1
+    until preset_idx
+
+    preset_idx_current = -1  -- Preset not in use (all used)
+    current_unit_idx = current_unit_idx + 1
     -- Rotate back to 1 if the index goes out of bound
-    if configs.config_dark_mem_idx > table.getn(coords.quest_select_dark_mem) then
-        configs.config_dark_mem_idx = 1
+    if current_unit_idx > table.getn(coords.quest_select_dark_mem) then
+        current_unit_idx = 1
     end
 end
 
@@ -28,7 +50,7 @@ end
 ---
 ---Also change to dark mem unit select state if the indicator for dark mem list is no longer available.
 function action_dark.select_unit()
-    local unit_loc = coords.quest_select_dark_mem[configs.config_dark_mem_idx]
+    local unit_loc = coords.quest_select_dark_mem[current_unit_idx]
 
     if base.check_image(images.quest_dark_mem_unit_indicator, status.QUEST_DARK_MEM_SELECT, function()
         quest_idx_advance_lock = false
@@ -36,12 +58,20 @@ function action_dark.select_unit()
         return
     end
 
-    base.click_delay(unit_loc)
+    -- Only click the unit icon if found the list indicator
+    if base.check_image(images.quest_dark_mem_list_indicator, status.get_current()) then
+        base.click_delay(unit_loc)
+    end
 end
 
 ---Check if the standard quest is locked and return the result.
 function action_dark.check_std_locked()
-    return base.check_image(images.quest_dark_mem_lock_icon, status.QUEST_DARK_MEM_LOCKED)
+    local result = base.check_image(images.quest_dark_mem_lock_icon, status.QUEST_DARK_MEM_LOCKED)
+
+    -- Set current preset idx to used
+    if result then
+        preset_idx_used[preset_idx_current] = true
+    end
 end
 
 ---Keeps clicking the back button until backed to the dark mem list page.
@@ -49,7 +79,12 @@ end
 ---Also changes the state to dark mem list if the corresponding indicator is found,
 ---and, advances the current dark mem index.
 function action_dark.back_to_list()
-    base.click_delay(coords.quest_select_dark_mem_back)
+    -- Click on back ONLY IF found the dark mem unit indicator
+    base.check_image(images.quest_dark_mem_unit_indicator, nil, function()
+        base.click_delay(coords.quest_select_dark_mem_back)
+    end)
+
+    -- Change the current state to dark mem list if found the list indicator
     base.check_image(images.quest_dark_mem_list_indicator, status.QUEST_DARK_MEM_LIST)
     advance_dark_mem_idx()
 end

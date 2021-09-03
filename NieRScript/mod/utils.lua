@@ -29,4 +29,15 @@ function utils.correct_location(location)
     )
 end
 
+function utils.init_table(value, count)
+    local ret = {}
+    local i = 1
+    repeat
+        ret[i] = value
+        i = i + 1
+    until i > count
+
+    return ret
+end
+
 return utils

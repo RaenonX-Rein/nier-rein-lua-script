@@ -68,10 +68,22 @@ local function show_quest_config_dialog()
     addTextView("Play count: ")
     addEditNumber("config_total_games", 100)
 
-    -- Play Count
+    -- Dark Mem IDXs
     newRow()
-    addTextView("Dark Mem Start Index (index-1): ")
-    addEditNumber("config_dark_mem_idx", 1)
+    addTextView("Dark Mem Start Index 1 (index-1): ")
+    addEditNumber("config_dark_mem_idx_1", 1)
+
+    newRow()
+    addTextView("Dark Mem Start Index 2 (index-1): ")
+    addEditNumber("config_dark_mem_idx_2", 2)
+
+    newRow()
+    addTextView("Dark Mem Start Index 3 (index-1): ")
+    addEditNumber("config_dark_mem_idx_3", 3)
+
+    newRow()
+    addTextView("Dark Mem Start Index 4 (index-1): ")
+    addEditNumber("config_dark_mem_idx_4", 4)
 
     -- Arena target IDX
     newRow()
@@ -100,7 +112,12 @@ end
 local function load_config_data()
     configs.quest_select = configs.quests[config_selected_quest_idx]
     configs.fill_item = configs.fill_items[config_fill_item_idx]
-    configs.config_dark_mem_idx = config_dark_mem_idx
+    configs.config_dark_mem_idx = {
+        config_dark_mem_idx_1,
+        config_dark_mem_idx_2,
+        config_dark_mem_idx_3,
+        config_dark_mem_idx_4,
+    }
     configs.total_games = config_total_games
     configs.reset_counter = config_reset_counter
     configs.log_drop = config_log_drop

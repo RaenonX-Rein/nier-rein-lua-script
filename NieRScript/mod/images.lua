@@ -17,6 +17,11 @@ images.quest_dark_mem_unit_indicator = {
     region = Region(270, 209, 37, 41);
 }
 
+images.quest_dark_mem_list_indicator = {
+    path = "dark-mem-list.png";
+    region = Region(551, 1142, 58, 51);
+}
+
 images.quest_dark_mem_complete_indicator = {
     path = "dark-mem-end.png";
     region = Region(2310, 1320, 47, 47);
@@ -24,7 +29,7 @@ images.quest_dark_mem_complete_indicator = {
 
 images.quest_dark_mem_lock_icon = {
     path = "dark-mem-lock.png";
-    region = Region(2082, 322, 47, 50);
+    region = Region(2072, 312, 77, 80);
 }
 
 images.quest_wrong_indicator_pod = {
