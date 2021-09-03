@@ -133,7 +133,7 @@ function action_quest.quest_check_ssr_drop()
         return
     end
 
-    -- Close the menu if dropped
+    -- Close the menu if dropped and change to clear state if dropped
     if base.check_image(images.in_game_drop_ssr_1, status.QUEST_IN_GAME_SSR_DROPPED) then
         action_quest.quest_close_menu()
         return
