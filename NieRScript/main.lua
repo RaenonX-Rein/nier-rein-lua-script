@@ -90,6 +90,7 @@ while true do
             action_dark.select_unit()  -- Detect unit selection page
             action_dark.check_std_locked()  -- Detect quest lock in dark mem page of a unit
             action_quest.quest_start_quest(false)  -- Detect in-game or insufficient AP
+            action_quest.quest_check_complete_ssr_dropped()  -- Detect dark mem end
         else
             action_quest.quest_select_quest()  -- Detect quest menu
             action_quest.quest_start_quest(false)  -- Detect in-game or insufficient AP
