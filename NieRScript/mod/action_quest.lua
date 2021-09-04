@@ -260,7 +260,7 @@ function action_quest.fill_ap_select_item()
         if fill_item == "AP/S" then
             -- AP/S only fill 10 AP at once, so fill 10 times = 100 AP
             for _ = 1, 10 do
-                base.click_delay(coords.refill_by_pot_sm, 1000)
+                base.click_delay(coords.refill_by_pot_sm, 1)
             end
         elseif fill_item == "AP/M" then
             base.click_delay(coords.refill_by_pot_md)
