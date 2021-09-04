@@ -23,6 +23,7 @@ configs.fill_items = {
 
 configs.quests = {
     "--Row--",
+    "DarkMem/StdLoop",
     "DarkMem/Std",
     "DarkMem/Exp",
     "DarkMem/Mst",
@@ -136,7 +137,9 @@ validate_config()
 local q = configs.quest_select
 
 function configs.get_status_file_name()
-    if q == "DarkMem/Std" then
+    if q == "DarkMem/StdLoop" then
+        return "stats-std-loop"
+    elseif q == "DarkMem/Std" then
         return "stats-std"
     elseif q == "DarkMem/Exp" then
         return "stats-exp"
@@ -147,8 +150,12 @@ function configs.get_status_file_name()
     return "stats"
 end
 
+function configs.is_current_dark_mem()
+    return q:find("^DarkMem")
+end
+
 function configs.get_not_using_battery_save()
-    return q == "DarkMem/Std" or q == "DarkMem/Exp" or q == "DarkMem/Mst" or q == "Memory/Sergeant10"
+    return configs.is_current_dark_mem() or q == "Memory/Sergeant10"
 end
 --endregion
 

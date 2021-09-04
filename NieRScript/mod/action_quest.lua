@@ -33,7 +33,7 @@ function action_quest.quest_select_quest()
 
     local quest_name = configs.quest_select
 
-    if quest_name == "DarkMem/Std" then
+    if quest_name:find("^DarkMem/Std") then
         base.click_delay(coords.quest_select_dark_mem_std)
     elseif quest_name == "DarkMem/Exp" then
         base.click_delay(coords.quest_select_dark_mem_exp)
@@ -82,7 +82,7 @@ end
 function action_quest.quest_handle_at_wave_3()
     local quest_name = configs.quest_select
 
-    if quest_name == "DarkMem/Std" or quest_name == "DarkMem/Exp" or quest_name == "DarkMem/Mst" then
+    if configs.is_current_dark_mem() then
         status.update(status.QUEST_ATTEMPT_OPEN_MENU)
     elseif quest_name == "Memory/Sergeant10" then
         action_quest.quest_sergeant_10_wave_3()
@@ -95,9 +95,7 @@ end
 function action_quest.quest_click_menu()
     base.click_delay(coords.quest_menu_btn)
 
-    local quest_name = configs.quest_select
-
-    if quest_name == "DarkMem/Std" then
+    if configs.is_current_dark_mem() then
         -- Change status if menu back button is found (menu opened)
         base.check_image(images.in_game_menu_back_btn, status.QUEST_CHECK_SSR_DROP)
     end
@@ -167,10 +165,18 @@ end
 
 ---Check if the quest is completed.
 function action_quest.quest_check_complete_ssr_dropped()
-    -- Check if the quest ends. If so, click on the end button and set state to select
     base.check_image(images.quest_dark_mem_complete_indicator, status.QUEST_DARK_MEM_SELECT, function(loc)
         counter.count_pass()
-        base.click_delay(loc)
+
+        local quest_name = configs.quest_select
+
+        -- Only click on the end button if it's StdLoop, otherwise terminate
+        if quest_name == "DarkMem/StdLoop" then
+            base.click_delay(loc)
+        else
+            sys.terminate("SSR Dropped")
+        end
+
     end)
 end
 
