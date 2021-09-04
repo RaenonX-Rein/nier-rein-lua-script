@@ -51,6 +51,7 @@ coords.refill_by_gem = Location(1477, 522)  -- Click to refill by Gems
 coords.refill_by_pot_sm = Location(1485, 553)  -- Click to refill by AP Potion S
 coords.refill_by_pot_md = Location(1485, 817)  -- Click to refill by AP Potion M
 coords.refill_by_pot_lg = Location(1485, 1075)  -- Click to refill by AP Potion L
+coords.refill_add_item = Location(1923, 476)  -- Click to add items to consume
 coords.refill_confirm = Location(1760, 1282)  -- Confirm AP refill
 coords.refill_filled_close = Location(1484, 1115)  -- Close the AP filled dialog
 --endregion
