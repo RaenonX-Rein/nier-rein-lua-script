@@ -3,17 +3,10 @@ utils = require(scriptPath() .. "mod/utils")
 local coords = {}
 
 --region Quest Select
--- Dark Memories (DarkMem)
-coords.quest_select_dark_mem_coin_1 = Location(2076, 638)  -- Trade coin quest (DarkMem/Coin-1)
-coords.quest_select_dark_mem_ticket_1 = Location(2076, 907)  -- Scout ticket quest (DarkMem/Ticket-1)
-coords.quest_select_dark_mem_coin_2 = Location(2087, 816)  -- Trade coin quest (DarkMem/Coin-2)
-coords.quest_select_dark_mem_ticket_2 = Location(2087, 1080)  -- Trade coin quest (DarkMem/Coin-2)
+-- Dark Memories
 coords.quest_select_dark_mem_std = Location(2107, 362)  -- Standard dark memory
 coords.quest_select_dark_mem_exp = Location(2090, 637)  -- Expert dark memory
 coords.quest_select_dark_mem_mst = Location(2090, 901)  -- Master dark memory
-coords.quest_select_dark_mem_swipe_1 = Location(2092, 1090)  -- Starting point of the swipe on the dark mem menu
-coords.quest_select_dark_mem_swipe_2 = Location(2092, 340)  -- Ending point of the swipe on the dark mem menu
--- Dark Memories
 coords.quest_select_dark_mem = {
     -- Starts from index 1, and index 1 ~ 6 is top-left to top-right
     Location(931, 593),

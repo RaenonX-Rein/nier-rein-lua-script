@@ -7,11 +7,6 @@ images.friend_icon = {
     region = Region(2527, 58, 68, 56);
 }
 
-images.quest_dark_mem_2_coin_text = {
-    path = "coin-txt.png";
-    region = Region(1800, 783, 61, 53);
-}
-
 images.quest_dark_mem_unit_indicator = {
     path = "dark-mem-unit.png";
     region = Region(270, 209, 37, 41);

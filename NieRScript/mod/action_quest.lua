@@ -10,14 +10,6 @@ sys = require(scriptPath() .. "mod/sys")
 
 local action_quest = {}
 
-local function quest_dark_mem_swipe_up()
-    return base.check_image_swipe_up(
-        images.quest_dark_mem_2_coin_text,
-        coords.quest_select_dark_mem_swipe_1,
-        coords.quest_select_dark_mem_swipe_2
-    )
-end
-
 ---Select the quest to auto if the current page is in quest selection menu.
 function action_quest.quest_select_quest()
     if base.check_image(images.quest_ready_indicator, status.QUEST_READY) then
@@ -41,21 +33,7 @@ function action_quest.quest_select_quest()
 
     local quest_name = configs.quest_select
 
-    if quest_name == "DarkMem/Ticket-1" then
-        base.click_delay(coords.quest_select_dark_mem_ticket_1)
-    elseif quest_name == "DarkMem/Coin-1" then
-        base.click_delay(coords.quest_select_dark_mem_coin_1)
-    elseif quest_name == "DarkMem/Ticket-2" then
-        if not quest_dark_mem_swipe_up() then
-            return
-        end
-        base.click_delay(coords.quest_select_dark_mem_ticket_2)
-    elseif quest_name == "DarkMem/Coin-2" then
-        if not quest_dark_mem_swipe_up() then
-            return
-        end
-        base.click_delay(coords.quest_select_dark_mem_coin_2)
-    elseif quest_name == "DarkMem/Std" then
+    if quest_name == "DarkMem/Std" then
         base.click_delay(coords.quest_select_dark_mem_std)
     elseif quest_name == "DarkMem/Exp" then
         base.click_delay(coords.quest_select_dark_mem_exp)

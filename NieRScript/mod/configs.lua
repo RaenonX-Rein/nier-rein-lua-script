@@ -23,12 +23,6 @@ configs.fill_items = {
 
 configs.quests = {
     "--Row--",
-    "DarkMem/Ticket-1",
-    "DarkMem/Coin-1",
-    "--Row--",
-    "DarkMem/Ticket-2",
-    "DarkMem/Coin-2",
-    "--Row--",
     "DarkMem/Std",
     "DarkMem/Exp",
     "DarkMem/Mst",
