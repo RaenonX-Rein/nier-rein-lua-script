@@ -31,11 +31,9 @@ end
 
 function utils.init_table(value, count)
     local ret = {}
-    local i = 1
-    repeat
+    for i = 1, count do
         ret[i] = value
-        i = i + 1
-    until i > count
+    end
 
     return ret
 end
