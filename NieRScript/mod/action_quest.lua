@@ -263,6 +263,12 @@ local function fill_ap_item_swipe_up()
     )
 end
 
+function click_if_not_ap_refill_confirm(coord)
+    if not base.check_image(images.ap_refill_confirm_indicator, status.FILL_AP_CONFIRM) then
+        base.click_delay(coord)
+    end
+end
+
 ---Select the item to use for filling AP.
 function action_quest.fill_ap_select_item()
     if base.check_image(images.ap_refill_confirm_indicator, status.FILL_AP_CONFIRM) then
@@ -279,11 +285,14 @@ function action_quest.fill_ap_select_item()
         end
 
         if fill_item == "AP/S" then
-            base.click_delay(coords.refill_by_pot_sm)
+            click_if_not_ap_refill_confirm(coords.refill_by_pot_sm)
+            click_if_not_ap_refill_confirm(coords.refill_by_pot_md)
+            click_if_not_ap_refill_confirm(coords.refill_by_pot_lg)
         elseif fill_item == "AP/M" then
-            base.click_delay(coords.refill_by_pot_md)
+            click_if_not_ap_refill_confirm(coords.refill_by_pot_md)
+            click_if_not_ap_refill_confirm(coords.refill_by_pot_lg)
         elseif fill_item == "AP/L" then
-            base.click_delay(coords.refill_by_pot_lg)
+            click_if_not_ap_refill_confirm(coords.refill_by_pot_lg)
         end
     else
         sys.terminate(string.format("Unknown AP fill item: %s", quest_name))
