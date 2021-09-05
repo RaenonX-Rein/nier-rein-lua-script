@@ -4,7 +4,6 @@ coords = require(scriptPath() .. "mod/coords")
 configs = require(scriptPath() .. "mod/configs")
 images = require(scriptPath() .. "mod/images")
 status = require(scriptPath() .. "mod/status")
-sys = require(scriptPath() .. "mod/sys")
 utils = require(scriptPath() .. "mod/utils")
 --endregion
 
@@ -25,18 +24,21 @@ function advance_dark_mem_idx()
         return
     end
 
+    -- Set current preset idx to used
+    if preset_idx_current ~= -1 then
+        preset_idx_used[preset_idx_current] = true
+    end
+
     quest_idx_advance_lock = true
 
     -- Set index according to preset order first
-    local preset_idx = 1
-    repeat
+    for preset_idx = 1, preset_count do
         if not preset_idx_used[preset_idx] then
             preset_idx_current = preset_idx
             current_unit_idx = configs.config_dark_mem_idx[preset_idx]
             return
         end
-        preset_idx = preset_idx + 1
-    until preset_idx
+    end
 
     preset_idx_current = -1  -- Preset not in use (all used)
     current_unit_idx = current_unit_idx + 1
@@ -66,12 +68,7 @@ end
 
 ---Check if the standard quest is locked and return the result.
 function action_dark.check_std_locked()
-    local result = base.check_image(images.quest_dark_mem_std_locked, status.QUEST_DARK_MEM_STD_LOCKED)
-
-    -- Set current preset idx to used
-    if result then
-        preset_idx_used[preset_idx_current] = true
-    end
+    base.check_image(images.quest_dark_mem_std_locked, status.QUEST_DARK_MEM_STD_LOCKED)
 end
 
 ---Keeps clicking the back button until backed to the dark mem list page.
