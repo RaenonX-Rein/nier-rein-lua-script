@@ -28,6 +28,8 @@ configs.quests = {
     "DarkMem/Exp",
     "DarkMem/Mst",
     "--Row--",
+    "DarkMem/EM",
+    "--Row--",
     "Auto-10",
     "Arena",
 }

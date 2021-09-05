@@ -32,6 +32,26 @@ images.quest_dark_mem_std_locked = {
     region = Region(2072, 312, 77, 80);
 }
 
+images.quest_dark_mem_exp_locked = {
+    path = "dark-mem-lock.png";
+    region = Region(2072, 569, 77, 80);
+}
+
+images.quest_dark_mem_exp_available = {
+    path = "dark-mem-exp.png";
+    region = Region(1925, 538, 57, 62);
+}
+
+images.quest_dark_mem_mst_locked = {
+    path = "dark-mem-lock.png";
+    region = Region(2072, 826, 77, 80);
+}
+
+images.quest_dark_mem_mst_available = {
+    path = "dark-mem-mst.png";
+    region = Region(1921, 793, 64, 62);
+}
+
 images.quest_wrong_indicator_pod = {
     path = "cancel-txt.png";
     region = Region(1794, 1184, 58, 64);

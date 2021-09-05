@@ -1,4 +1,5 @@
 --region Imports
+action_dark = require(scriptPath() .. "mod/action_dark_mem")
 base = require(scriptPath() .. "mod/base")
 coords = require(scriptPath() .. "mod/coords")
 configs = require(scriptPath() .. "mod/configs")
@@ -31,7 +32,7 @@ function action_quest.enter_quest_type()
     base.check_image(images.quest_dark_mem_list_indicator, status.QUEST_DARK_MEM_LIST)
 end
 
----Select the quest to auto if the current page is in quest selection menu.
+---Select the quest to run.
 function action_quest.quest_select_quest()
     if base.check_image(images.quest_ready_indicator, status.QUEST_READY) then
         return  -- Found quest ready indicator, update the status and terminate
@@ -54,12 +55,14 @@ function action_quest.quest_select_quest()
 
     local quest_name = configs.quest_select
 
-    if quest_name:find("^DarkMem/Std") then
+    if quest_name:find("^DarkMem/Std") and not action_dark.check_std_locked() then
         base.click_delay(coords.quest_select_dark_mem_std)
     elseif quest_name == "DarkMem/Exp" then
         base.click_delay(coords.quest_select_dark_mem_exp)
     elseif quest_name == "DarkMem/Mst" then
         base.click_delay(coords.quest_select_dark_mem_mst)
+    elseif quest_name == "DarkMem/EM" then
+        action_dark.check_dark_mem_expert()
     else
         sys.terminate(string.format("Unknown quest to select: %s", quest_name))
     end
@@ -104,7 +107,11 @@ function action_quest.quest_handle_at_wave_3()
     local quest_name = configs.quest_select
 
     if configs.is_current_dark_mem() then
-        status.update(status.QUEST_ATTEMPT_OPEN_MENU)
+        if quest_name == "DarkMem/EM" then
+            status.update(status.QUEST_WAIT_DARK_MEM_COMPLETED)
+        else
+            status.update(status.QUEST_ATTEMPT_OPEN_MENU)
+        end
     elseif quest_name == "Memory/Sergeant10" then
         action_quest.quest_sergeant_10_wave_3()
     else
@@ -184,7 +191,7 @@ function action_quest.quest_check_single_loop_complete()
     end
 end
 
----Check if the quest is completed.
+---Check if the quest is completed when dark mem SSR dropped.
 function action_quest.quest_check_complete_ssr_dropped()
     base.check_image(images.quest_dark_mem_complete_indicator, status.QUEST_DARK_MEM_SELECT, function(loc)
         counter.count_pass()
@@ -197,7 +204,14 @@ function action_quest.quest_check_complete_ssr_dropped()
         else
             sys.terminate("SSR Dropped")
         end
+    end)
+end
 
+function action_quest.quest_check_dark_mem_completed()
+    base.check_image(images.quest_dark_mem_complete_indicator, status.QUEST_DARK_MEM_SELECT, function(loc)
+        counter.count_pass()
+
+        base.click_delay(loc)
     end)
 end
 

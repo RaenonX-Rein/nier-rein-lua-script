@@ -49,15 +49,19 @@ while true do
     elseif current_status == status.QUEST_DARK_MEM_LIST then
         action_dark.select_unit()
     elseif current_status == status.QUEST_DARK_MEM_SELECT then
-        if not action_dark.check_std_locked() then
-            action_quest.quest_select_quest()
-        end
+        action_quest.quest_select_quest()
     elseif current_status == status.QUEST_DARK_MEM_STD_LOCKED then
+        action_dark.back_to_list()
+    elseif current_status == status.QUEST_DARK_MEM_EXP_LOCKED then
+        action_dark.check_dark_mem_master()
+    elseif current_status == status.QUEST_DARK_MEM_MST_LOCKED then
         action_dark.back_to_list()
     elseif current_status == status.QUEST_ATTEMPT_OPEN_MENU then
         action_quest.quest_click_menu()
     elseif current_status == status.QUEST_CHECK_SSR_DROP then
         action_quest.quest_check_ssr_drop()
+    elseif current_status == status.QUEST_WAIT_DARK_MEM_COMPLETED then
+        action_quest.quest_check_dark_mem_completed()
     elseif current_status == status.ARENA_MAIN then
         action_arena.arena_open_menu()
     elseif current_status == status.ARENA_SELECT then
@@ -84,18 +88,23 @@ while true do
     elseif current_status == status.UNKNOWN then
         local quest = configs.quest_select
 
+        if quest ~= "Arena" then
+            action_quest.quest_start_quest(false)  -- Detect in-game or insufficient AP
+        end
+
+        if quest == "DarkMem/StdLoop" or quest == "DarkMem/EM" then
+            action_dark.select_unit()  -- Detect unit selection page
+        end
+
         if quest == "Arena" then
             action_arena.arena_open_menu()  -- Detect arena main screen
             action_arena.arena_start_battle()  -- Detect arena start battle
             action_arena.arena_in_battle()  -- Detect arena in-game (just ends)
         elseif quest == "DarkMem/StdLoop" then
-            action_dark.select_unit()  -- Detect unit selection page
             action_dark.check_std_locked()  -- Detect quest lock in dark mem page of a unit
-            action_quest.quest_start_quest(false)  -- Detect in-game or insufficient AP
             action_quest.quest_check_complete_ssr_dropped()  -- Detect dark mem end
         else
             action_quest.quest_select_quest()  -- Detect quest menu
-            action_quest.quest_start_quest(false)  -- Detect in-game or insufficient AP
         end
 
         action_quest.check_quest_type()

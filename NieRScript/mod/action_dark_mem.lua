@@ -86,4 +86,34 @@ function action_dark.back_to_list()
     advance_dark_mem_idx()
 end
 
+---Check if the expert dark memory is locked.
+---
+---If not and available, select it; if it's locked or not available, change the state.
+function action_dark.check_dark_mem_expert()
+    if base.check_image(images.quest_dark_mem_exp_locked, status.QUEST_DARK_MEM_EXP_LOCKED) then
+        return
+    end
+
+    if base.check_image(images.quest_dark_mem_exp_available) then
+        base.click_delay(coords.quest_select_dark_mem_exp)
+        status.update(status.QUEST_READY)
+    end
+end
+
+---Check if the master dark memory is locked.
+---
+---If not and available, select it; if it's locked or not available, change the state.
+function action_dark.check_dark_mem_master()
+    if base.check_image(images.quest_dark_mem_mst_locked, status.QUEST_DARK_MEM_MST_LOCKED) then
+        return
+    end
+
+    if base.check_image(images.quest_dark_mem_mst_available) then
+        base.click_delay(coords.quest_select_dark_mem_mst)
+        status.update(status.QUEST_READY)
+    else
+        action_dark.back_to_list()
+    end
+end
+
 return action_dark
