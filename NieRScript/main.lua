@@ -52,7 +52,7 @@ while true do
         if not action_dark.check_std_locked() then
             action_quest.quest_select_quest()
         end
-    elseif current_status == status.QUEST_DARK_MEM_LOCKED then
+    elseif current_status == status.QUEST_DARK_MEM_STD_LOCKED then
         action_dark.back_to_list()
     elseif current_status == status.QUEST_ATTEMPT_OPEN_MENU then
         action_quest.quest_click_menu()

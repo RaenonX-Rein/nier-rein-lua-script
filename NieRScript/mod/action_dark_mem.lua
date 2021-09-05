@@ -66,7 +66,7 @@ end
 
 ---Check if the standard quest is locked and return the result.
 function action_dark.check_std_locked()
-    local result = base.check_image(images.quest_dark_mem_lock_icon, status.QUEST_DARK_MEM_LOCKED)
+    local result = base.check_image(images.quest_dark_mem_std_locked, status.QUEST_DARK_MEM_STD_LOCKED)
 
     -- Set current preset idx to used
     if result then
