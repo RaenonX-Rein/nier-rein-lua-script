@@ -3,6 +3,8 @@ utils = require(scriptPath() .. "mod/utils")
 local coords = {}
 
 --region Quest Select
+-- Type
+coords.quest_select_sub_quest = Location(1487, 618)  -- Sub-quest type
 -- Dark Memories
 coords.quest_select_dark_mem_std = Location(2107, 362)  -- Standard dark memory
 coords.quest_select_dark_mem_exp = Location(2090, 637)  -- Expert dark memory

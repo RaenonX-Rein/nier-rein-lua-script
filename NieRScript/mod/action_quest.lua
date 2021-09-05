@@ -10,6 +10,27 @@ sys = require(scriptPath() .. "mod/sys")
 
 local action_quest = {}
 
+---Check if the current screen is quest type list.
+function action_quest.check_quest_type()
+    base.check_image(images.quest_type_indicator, status.QUEST_TYPE)
+end
+
+---Enter the corresponding quest type.
+---
+---Terminates the script if the current selected quest is unsupported.
+function action_quest.enter_quest_type()
+    if not configs.is_current_dark_mem() then
+        sys.terminate('Only DarkMem is supported for quest type recovery.')
+    end
+
+    -- Click on sub-quest if the current screen is quest type
+    if base.check_image(images.quest_type_indicator) then
+        base.click_delay(coords.quest_select_sub_quest)
+    end
+    -- Check and change the state if the current screen is dark mem list
+    base.check_image(images.quest_dark_mem_list_indicator, status.QUEST_DARK_MEM_LIST)
+end
+
 ---Select the quest to auto if the current page is in quest selection menu.
 function action_quest.quest_select_quest()
     if base.check_image(images.quest_ready_indicator, status.QUEST_READY) then

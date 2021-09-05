@@ -14,7 +14,9 @@ setImmersiveMode(true)
 while true do
     local current_status = status.get_current()
 
-    if current_status == status.QUEST_SELECT then
+    if current_status == status.QUEST_TYPE then
+        action_quest.enter_quest_type()
+    elseif current_status == status.QUEST_SELECT then
         action_quest.quest_select_quest()
     elseif current_status == status.QUEST_READY then
         action_quest.quest_start_quest()
@@ -95,6 +97,8 @@ while true do
             action_quest.quest_select_quest()  -- Detect quest menu
             action_quest.quest_start_quest(false)  -- Detect in-game or insufficient AP
         end
+
+        action_quest.check_quest_type()
     else
         sys.terminate(string.format("Unhandled state: %s\nScript terminated.", current_status))
     end

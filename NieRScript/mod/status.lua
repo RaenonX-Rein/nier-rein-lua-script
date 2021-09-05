@@ -8,6 +8,7 @@ local status = {}
 --region States
 status.UNKNOWN = "Unknown"
 
+status.QUEST_TYPE = "Quest / Type"
 status.QUEST_SELECT = "Quest / Select"
 status.QUEST_READY = "Quest / Ready"
 status.QUEST_READY_INSUFFICIENT = "Quest / Ready (Insufficient)"
