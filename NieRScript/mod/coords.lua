@@ -32,6 +32,7 @@ coords.quest_select_wrong_pod = Location(1918, 1215)  -- Click the cancel button
 
 --region In Game
 coords.in_game_target_sergeant = Location(116, 387)  -- Click to target the in_game_target_sergeant
+coords.in_game_2x = Location(2457, 49)  -- In-game 2x icon location
 --endregion
 
 --region Quest Control

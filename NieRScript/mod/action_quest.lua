@@ -100,6 +100,9 @@ end
 function action_quest.quest_check_into_wave_3()
     counter.unlock()
     base.check_image(images.in_game_wave_3, status.QUEST_IN_GAME_AT_WAVE_3)
+    base.check_image(images.in_game_no_2x, nil, function()
+        base.click_delay(coords.in_game_2x)
+    end)
 end
 
 ---Actions to be performed at wave 3.

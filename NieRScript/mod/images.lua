@@ -82,6 +82,11 @@ images.in_game_2x_icon = {
     region = Region(2418, 20, 47, 56);
 }
 
+images.in_game_no_2x = {
+    path = "in-game-no-2x.png";
+    region = Region(2415, 18, 53, 60);
+}
+
 images.in_game_menu_back_btn = {
     path = "back-txt.png";
     region = Region(1424, 1250, 66, 62);
