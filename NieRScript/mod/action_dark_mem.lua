@@ -4,6 +4,7 @@ coords = require(scriptPath() .. "mod/coords")
 configs = require(scriptPath() .. "mod/configs")
 images = require(scriptPath() .. "mod/images")
 status = require(scriptPath() .. "mod/status")
+sys = require(scriptPath() .. "mod/sys")
 utils = require(scriptPath() .. "mod/utils")
 --endregion
 
@@ -53,7 +54,13 @@ function advance_dark_mem_idx()
     current_unit_idx = current_unit_idx + 1
     -- Rotate back to 1 if the index goes out of bound
     if current_unit_idx > table.getn(coords.quest_select_dark_mem) then
-        current_unit_idx = 1
+        if configs.is_current_dark_mem_clear_all() then
+            -- Do not loop back to 1 if it's clear all
+            -- Going into here means all cleared
+            sys.terminate("DarkMem all cleared.")
+        else
+            current_unit_idx = 1
+        end
     end
 end
 
