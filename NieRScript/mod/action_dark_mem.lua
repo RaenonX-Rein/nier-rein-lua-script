@@ -17,26 +17,35 @@ local preset_idx_current = 1  -- -1 for not in use
 
 local preset_idx_used = utils.init_table(false, preset_count)
 
-local current_unit_idx = configs.config_dark_mem_idx[1]
+local current_unit_idx
+
+if configs.is_current_dark_mem_clear_all() then
+    current_unit_idx = 1
+else
+    current_unit_idx = configs.config_dark_mem_idx[1]
+end
 
 function advance_dark_mem_idx()
     if quest_idx_advance_lock then
         return
     end
 
-    -- Set current preset idx to used
-    if preset_idx_current ~= -1 then
-        preset_idx_used[preset_idx_current] = true
-    end
-
     quest_idx_advance_lock = true
 
-    -- Set index according to preset order first
-    for preset_idx = 1, preset_count do
-        if not preset_idx_used[preset_idx] then
-            preset_idx_current = preset_idx
-            current_unit_idx = configs.config_dark_mem_idx[preset_idx]
-            return
+    -- Only use preset if the current quest selection is not dark mem clear all
+    if not configs.is_current_dark_mem_clear_all() then
+        -- Set current preset idx to used
+        if preset_idx_current ~= -1 then
+            preset_idx_used[preset_idx_current] = true
+        end
+
+        -- Set index according to preset order first
+        for preset_idx = 1, preset_count do
+            if not preset_idx_used[preset_idx] then
+                preset_idx_current = preset_idx
+                current_unit_idx = configs.config_dark_mem_idx[preset_idx]
+                return
+            end
         end
     end
 
