@@ -92,7 +92,7 @@ while true do
             action_quest.quest_start_quest(false)  -- Detect in-game or insufficient AP
         end
 
-        if quest == "DarkMem/StdLoop" or quest == "DarkMem/EM" then
+        if quest == "DarkMem/StdLoop" or configs.is_current_dark_mem_clear_all() then
             action_dark.select_unit()  -- Detect unit selection page
         end
 

@@ -61,7 +61,7 @@ function action_quest.quest_select_quest()
         base.click_delay(coords.quest_select_dark_mem_exp)
     elseif quest_name == "DarkMem/Mst" then
         base.click_delay(coords.quest_select_dark_mem_mst)
-    elseif quest_name == "DarkMem/EM" then
+    elseif quest_name == "DarkMem/C-EM" then
         action_dark.check_dark_mem_expert()
     else
         sys.terminate(string.format("Unknown quest to select: %s", quest_name))
@@ -110,7 +110,7 @@ function action_quest.quest_handle_at_wave_3()
     local quest_name = configs.quest_select
 
     if configs.is_current_dark_mem() then
-        if quest_name == "DarkMem/EM" then
+        if quest_name == "DarkMem/C-EM" then
             status.update(status.QUEST_WAIT_DARK_MEM_COMPLETED)
         else
             status.update(status.QUEST_ATTEMPT_OPEN_MENU)

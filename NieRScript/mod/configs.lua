@@ -28,7 +28,7 @@ configs.quests = {
     "DarkMem/Exp",
     "DarkMem/Mst",
     "--Row--",
-    "DarkMem/EM",
+    "DarkMem/C-EM",
     "--Row--",
     "Auto-10",
     "Arena",
@@ -154,6 +154,10 @@ end
 
 function configs.is_current_dark_mem()
     return q:find("^DarkMem")
+end
+
+function configs.is_current_dark_mem_clear_all()
+    return q:find("^DarkMem/C-")
 end
 
 function configs.get_not_using_battery_save()
