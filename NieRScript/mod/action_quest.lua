@@ -63,6 +63,8 @@ function action_quest.quest_select_quest()
         base.click_delay(coords.quest_select_dark_mem_mst)
     elseif quest_name == "DarkMem/C-EM" then
         action_dark.check_dark_mem_expert()
+    elseif quest_name == "DarkMem/C-SEM" then
+        action_dark.check_dark_mem_std()
     else
         sys.terminate(string.format("Unknown quest to select: %s", quest_name))
     end

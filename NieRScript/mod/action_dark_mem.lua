@@ -84,7 +84,7 @@ end
 
 ---Check if the standard quest is locked and return the result.
 function action_dark.check_std_locked()
-    base.check_image(images.quest_dark_mem_std_locked, status.QUEST_DARK_MEM_STD_LOCKED)
+    return base.check_image(images.quest_dark_mem_std_locked, status.QUEST_DARK_MEM_STD_LOCKED)
 end
 
 ---Keeps clicking the back button until backed to the dark mem list page.
@@ -100,6 +100,18 @@ function action_dark.back_to_list()
     -- Change the current state to dark mem list if found the list indicator
     base.check_image(images.quest_dark_mem_list_indicator, status.QUEST_DARK_MEM_LIST)
     advance_dark_mem_idx()
+end
+
+---Check if the standard dark memory is locked.
+---
+---If not and available, select it; if it's locked or not available, change the state.
+function action_dark.check_dark_mem_std()
+    if action_dark.check_std_locked() then
+        return
+    end
+
+    base.click_delay(coords.quest_select_dark_mem_std)
+    status.update(status.QUEST_READY)
 end
 
 ---Check if the expert dark memory is locked.

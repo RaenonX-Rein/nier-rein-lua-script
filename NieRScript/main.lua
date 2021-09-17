@@ -51,7 +51,11 @@ while true do
     elseif current_status == status.QUEST_DARK_MEM_SELECT then
         action_quest.quest_select_quest()
     elseif current_status == status.QUEST_DARK_MEM_STD_LOCKED then
-        action_dark.back_to_list()
+        if configs.is_current_dark_mem_clear_all() then
+            action_dark.check_dark_mem_expert()
+        else
+            action_dark.back_to_list()
+        end
     elseif current_status == status.QUEST_DARK_MEM_EXP_LOCKED then
         action_dark.check_dark_mem_master()
     elseif current_status == status.QUEST_DARK_MEM_MST_LOCKED then
