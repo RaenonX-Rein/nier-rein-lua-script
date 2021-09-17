@@ -324,7 +324,7 @@ function action_quest.fill_ap_confirm()
         -- AP/S only fills 10 AP at once, so consume 10 potions (100 AP)
         -- Otherwise, just directly confirm the recovery
         if configs.fill_item == "AP/S" then
-            for _ = 1, 10 do
+            for _ = 1, 5 do
                 base.click_delay(coords.refill_add_item, 1)
             end
         end
