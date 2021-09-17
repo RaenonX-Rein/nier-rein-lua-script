@@ -108,6 +108,7 @@ while true do
         end
 
         action_quest.check_quest_type()
+        action_quest.quest_close_menu()
     else
         sys.terminate(string.format("Unhandled state: %s\nScript terminated.", current_status))
     end
