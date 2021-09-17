@@ -38,4 +38,8 @@ function utils.init_table(value, count)
     return ret
 end
 
+function utils.starts_with(s, start)
+    return string.sub(s, 1, string.len(start)) == start
+end
+
 return utils

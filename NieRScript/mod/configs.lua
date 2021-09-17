@@ -1,3 +1,5 @@
+utils = require(scriptPath() .. "mod/utils")
+
 local configs = {}
 
 --region System
@@ -158,9 +160,7 @@ function configs.is_current_dark_mem()
 end
 
 function configs.is_current_dark_mem_clear_all()
-    local prefix = "DarkMem/C-"
-
-    return string.sub(q, 1, string.len(prefix)) == prefix
+    return utils.starts_with(q, "DarkMem/C-")
 end
 
 function configs.get_not_using_battery_save()
