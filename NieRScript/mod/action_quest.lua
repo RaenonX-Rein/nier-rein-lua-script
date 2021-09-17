@@ -7,6 +7,7 @@ counter = require(scriptPath() .. "mod/counter")
 images = require(scriptPath() .. "mod/images")
 status = require(scriptPath() .. "mod/status")
 sys = require(scriptPath() .. "mod/sys")
+utils = require(scriptPath() .. "mod/utils")
 --endregion
 
 local action_quest = {}
@@ -55,7 +56,7 @@ function action_quest.quest_select_quest()
 
     local quest_name = configs.quest_select
 
-    if quest_name:find("^DarkMem/Std") and not action_dark.check_std_locked() then
+    if utils.starts_with(quest_name, "DarkMem/Std") and not action_dark.check_std_locked() then
         base.click_delay(coords.quest_select_dark_mem_std)
     elseif quest_name == "DarkMem/Exp" then
         base.click_delay(coords.quest_select_dark_mem_exp)
