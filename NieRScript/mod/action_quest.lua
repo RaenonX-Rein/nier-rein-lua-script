@@ -56,8 +56,10 @@ function action_quest.quest_select_quest()
 
     local quest_name = configs.quest_select
 
-    if utils.starts_with(quest_name, "DarkMem/Std") and not action_dark.check_std_locked() then
-        base.click_delay(coords.quest_select_dark_mem_std)
+    if utils.starts_with(quest_name, "DarkMem/Std") then
+        if not action_dark.check_std_locked() then
+            base.click_delay(coords.quest_select_dark_mem_std)
+        end
     elseif quest_name == "DarkMem/Exp" then
         base.click_delay(coords.quest_select_dark_mem_exp)
     elseif quest_name == "DarkMem/Mst" then
