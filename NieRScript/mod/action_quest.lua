@@ -115,7 +115,7 @@ function action_quest.quest_handle_at_wave_3()
     local quest_name = configs.quest_select
 
     if configs.is_current_dark_mem() then
-        if quest_name == "DarkMem/C-EM" then
+        if configs.is_current_dark_mem_clear_all() then
             status.update(status.QUEST_WAIT_DARK_MEM_COMPLETED)
         else
             status.update(status.QUEST_ATTEMPT_OPEN_MENU)
