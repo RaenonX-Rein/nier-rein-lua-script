@@ -16,6 +16,8 @@ configs.toast_cd_sec = 5
 --endregion
 
 --region Game
+configs.pvp_skill_period = 0.1
+
 configs.fill_items = {
     "Gems",
     "AP/S",
