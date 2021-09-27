@@ -60,8 +60,11 @@ coords.refill_filled_close = Location(1484, 1115)  -- Close the AP filled dialog
 --endregion
 
 --region Arena
+coords.arena_p1_s1 = Location(1116, 1140)  -- 1st player S1
 coords.arena_p1_s2 = Location(1218, 1258)  -- 1st player S2
 coords.arena_p2_s1 = Location(1882, 1138)  -- 2nd player S1
+coords.arena_p2_s2 = Location(2001, 1261)  -- 2nd player S2
+coords.arena_p3_s1 = Location(2670, 1145)  -- 3rd player S1
 coords.arena_p3_s2 = Location(2781, 1256)  -- 3rd player S2
 coords.arena_target_1 = Location(113, 172)  -- Target the 1st enemy
 coords.arena_target_2 = Location(113, 383)  -- Target the 2nd enemy
