@@ -178,8 +178,8 @@ images.arena_pre_battle_wave = {
 }
 
 images.arena_in_battle_indicator = {
-    path = "in-game-2x.png";
-    region = Region(2420, 20, 46, 54);
+    path = "in-game-no-2x.png";
+    region = Region(2415, 18, 53, 60);
 }
 
 images.arena_target_1 = {
