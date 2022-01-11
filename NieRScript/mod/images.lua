@@ -19,7 +19,7 @@ images.quest_dark_mem_unit_indicator = {
 
 images.quest_dark_mem_list_indicator = {
     path = "dark-mem-list.png";
-    region = Region(551, 1142, 58, 51);
+    region = Region(508, 1141, 45, 53);
 }
 
 images.quest_dark_mem_complete_indicator = {
